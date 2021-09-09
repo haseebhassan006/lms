@@ -20,6 +20,7 @@ class sendContactReply extends Mailable
     public function __construct($contact)
     {
         $this->contact = $contact;
+        $email = env('MAIL_FROM_ADDRESS');
     }
 
     /**
@@ -33,12 +34,11 @@ class sendContactReply extends Mailable
 
         if (!empty($contact)) {
             $generalSettings = getGeneralSettings();
-
             return $this->subject($contact->subject)
-                ->from(!empty($generalSettings['site_email']) ? $generalSettings['site_email'] : env('MAIL_FROM_ADDRESS'))
+                ->from$this->email)
                 ->view('web.default.emails.contact', [
                     'contact' => $contact,
-                    'generalSettings' => $generalSettings
+                  
                 ]);
         }
     }

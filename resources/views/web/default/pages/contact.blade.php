@@ -29,7 +29,7 @@
             ></div>
 
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-12 col-md-4">
                     <div class="contact-items mt-30 rounded-lg py-20 py-md-40 px-15 px-md-30 text-center">
                         <div class="contact-icon-box box-info p-20 d-flex align-items-center justify-content-center mx-auto">
@@ -65,7 +65,7 @@
                         <p class="font-weight-500 text-gray font-14 mt-10">{!! nl2br(clean(str_replace(',','<br/>',$contactSettings['emails']))) !!}</p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </section>
 
         <section class="mt-30 mt-md-50">

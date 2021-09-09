@@ -48,7 +48,7 @@ class ContactController extends Controller
             '[c.u.title]' => $data['subject'],
             '[u.name]' => $data['name']
         ];
-        sendNotification('new_contact_message', $notifyOptions, 1);
+        // sendNotification('new_contact_message', $notifyOptions, 1);
 
         return back()->with(['msg' => trans('site.contact_store_success')]);
     }

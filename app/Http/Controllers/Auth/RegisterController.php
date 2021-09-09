@@ -127,7 +127,9 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
+
         $this->validator($request->all())->validate();
+
 
         $user = $this->create($request->all());
 
@@ -140,25 +142,27 @@ class RegisterController extends Controller
             $value = $request->get('country_code') . ltrim($request->get($username), '0');
         }
 
-        $verificationController = new VerificationController();
-        $checkConfirmed = $verificationController->checkConfirmed($user, $username, $value);
 
-        if ($checkConfirmed['status'] == 'send') {
-            return redirect('/verification');
-        } elseif ($checkConfirmed['status'] == 'verified') {
-            $this->guard()->login($user);
+        // $verificationController = new VerificationController();
+        // $checkConfirmed = $verificationController->checkConfirmed($user, $username, $value);
 
-            $user->update([
-                'status' => User::$active,
-            ]);
+        // if ($checkConfirmed['status'] == 'send') {
+        //     return redirect('/verification');
+        // } elseif ($checkConfirmed['status'] == 'verified') {
 
-            if ($response = $this->registered($request, $user)) {
-                return $response;
-            }
+        // }
+        $this->guard()->login($user);
 
-            return $request->wantsJson()
-                ? new JsonResponse([], 201)
-                : redirect($this->redirectPath());
-        }
+        $user->update([
+            'status' => User::$active,
+        ]);
+
+        // if ($response = $this->registered($request, $user)) {
+        //     return $response;
+        // }
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 201)
+            : redirect($this->redirectPath());
     }
 }

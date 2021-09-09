@@ -121,7 +121,7 @@ class AccountingController extends Controller
             $notifyOptions = [
                 '[amount]' => $amount,
             ];
-            sendNotification('offline_payment_request', $notifyOptions, $userAuth->id);
+            // sendNotification('offline_payment_request', $notifyOptions, $userAuth->id);
 
             $sweetAlertData = [
                 'msg' => trans('financial.offline_payment_request_success_store'),

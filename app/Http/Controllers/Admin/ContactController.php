@@ -51,10 +51,11 @@ class ContactController extends Controller
         $reply = $request->get('reply');
 
         $contact = Contact::findOrFail($id);
+      
         $contact->reply = $reply;
         $contact->status = 'replied';
         $contact->save();
-
+    
         if (!empty($contact->email)) {
             \Mail::to($contact->email)->send(new sendContactReply($contact));
         }
