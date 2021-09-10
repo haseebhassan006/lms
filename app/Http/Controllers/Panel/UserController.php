@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use App\Models\Newsletter;
 use App\Models\Role;
 use App\Models\UserMeta;
@@ -207,17 +208,29 @@ class UserController extends Controller
 
     public function createImage($user, $img)
     {
+
         $folderPath = "/" . $user->id . '/';
 
         $image_parts = explode(";base64,", $img);
+
         $image_type_aux = explode("image/", $image_parts[0]);
+
         $image_type = $image_type_aux[1];
+
         $image_base64 = base64_decode($image_parts[1]);
-        $file = uniqid() . '.' . $image_type;
+        $name = Str::slug($user->full_name, '-')  . "-" . time() . '.' . $image_type;
 
-        Storage::disk('public')->put($folderPath . $file, $image_base64);
 
-        return $file;
+
+        $t = 'store'.$folderPath.$name;
+
+
+
+     Storage::disk('public')->put($folderPath .$name, $image_base64);
+
+
+
+        return  $t;
     }
 
     public function storeMetas(Request $request)

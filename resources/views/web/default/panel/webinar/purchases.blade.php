@@ -79,11 +79,12 @@
                                     @else
                                         <span class="badge badge-secondary">{{ trans('public.finished') }}</span>
                                     @endif
-                                @elseif(!empty($webinar->downloadable))
+                                    @elseif(!empty($webinar->downloadable))
                                     <span class="badge badge-secondary">{{ trans('home.downloadable') }}</span>
-                                @else
+                                   @else
                                     <span class="badge badge-secondary">{{ trans('webinars.'.$webinar->type) }}</span>
-                                @endif
+                                   @endif
+
 
                                 @php
                                     $percent = $webinar->getProgress();
@@ -126,6 +127,9 @@
                                             @if(!empty($webinar->downloadable) or (!empty($webinar->files) and count($webinar->files)))
                                                 <a href="{{ $webinar->getUrl() }}?tab=content" target="_blank" class="webinar-actions d-block mt-10">{{ trans('home.download') }}</a>
                                             @endif
+                                            @if(!empty($webinar->classroom_link))
+                                            <a href="{{ $webinar->classroom_link }}" target="_blank" class="webinar-actions d-block mt-10">Google ClassRoom</a>
+                                         @endif
 
                                             @if($webinar->price > 0)
                                                 <a href="/panel/webinars/{{ $webinar->id }}/invoice" target="_blank" class="webinar-actions d-block mt-10">{{ trans('public.invoice') }}</a>
@@ -221,10 +225,10 @@
 
 @push('scripts_bottom')
     <script>
-        ;(function (){ 
+        ;(function (){
         'use strict'
         var undefinedActiveSessionLang = '{{ trans('webinars.undefined_active_session') }}';
-        }())           
+        }())
     </script>
 
     <script src="/assets/default/js/panel/join_webinar.min.js"></script>

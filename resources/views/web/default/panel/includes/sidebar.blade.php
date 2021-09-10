@@ -22,7 +22,7 @@
 
     <div class="user-info d-flex align-items-center flex-row flex-lg-column justify-content-lg-center">
         <a href="/panel" class="user-avatar">
-            <img src="{{ $authUser->getAvatar() }}" class="img-cover" alt="{{ $authUser->full_name }}">
+            <img src="{{ asset($authUser->avatar) }}" class="img-cover" alt="{{ $authUser->full_name }}">
         </a>
 
         <div class="d-flex flex-column align-items-center justify-content-center">

@@ -474,12 +474,12 @@
                                                 <i data-feather="star" width="20" height="20" class=""></i>
                                             @endwhile
                                         </div>
-
-                                        @if(!empty($instructor->hasMeeting()))
+                                        <a href="{{ $instructor->getProfileUrl() }}" class="btn btn-primary btn-sm rounded-pill mt-15">{{ trans('public.profile') }}</a>
+                                        {{-- @if(!empty($instructor->hasMeeting()))
                                             <a href="{{ $instructor->getProfileUrl() }}?tab=appointments" class="btn btn-primary btn-sm rounded-pill mt-15">{{ trans('home.reserve_a_live_class') }}</a>
                                         @else
                                             <a href="{{ $instructor->getProfileUrl() }}" class="btn btn-primary btn-sm rounded-pill mt-15">{{ trans('public.profile') }}</a>
-                                        @endif
+                                        @endif --}}
                                     </div>
                                 </div>
                             </div>

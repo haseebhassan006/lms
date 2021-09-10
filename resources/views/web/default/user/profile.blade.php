@@ -129,9 +129,9 @@
                     <a class="position-relative text-dark-blue font-weight-500 font-16 {{ (request()->get('tab') == 'badges') ? 'active' : ''  }}" id="badges-tab" data-toggle="tab" href="#badges" role="tab" aria-controls="badges" aria-selected="false">{{ trans('site.badges') }}</a>
                 </li>
 
-                <li class="nav-item mr-20 mr-lg-50 mt-30">
+                {{-- <li class="nav-item mr-20 mr-lg-50 mt-30">
                     <a class="position-relative text-dark-blue font-weight-500 font-16 {{ (request()->get('tab') == 'appointments') ? 'active' : ''  }}" id="appointments-tab" data-toggle="tab" href="#appointments" role="tab" aria-controls="appointments" aria-selected="false">{{ trans('site.book_an_appointment') }}</a>
-                </li>
+                </li> --}}
             </ul>
 
             <div class="tab-content" id="nav-tabContent">
@@ -205,11 +205,11 @@
 
 @push('scripts_bottom')
     <script>
-        ;(function (){ 
+        ;(function (){
         'use strict'
         var unFollowLang = '{{ trans('panel.unfollow') }}';
         var followLang = '{{ trans('panel.follow') }}';
-        var reservedLang = '{{ trans('meeting.reserved') }}';
+        // var reservedLang = '{{ trans('meeting.reserved') }}';
         var availableDays = {{ json_encode($times) }};
         var messageSuccessSentLang = '{{ trans('site.message_success_sent') }}';
         }())

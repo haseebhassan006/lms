@@ -15,8 +15,8 @@ class SubscribeController extends Controller
 {
     public function apply(Request $request, $webinarSlug)
     {
+        
         $user = auth()->user();
-
         $subscribe = Subscribe::getActiveSubscribe($user->id);
 
         if (!$subscribe) {
