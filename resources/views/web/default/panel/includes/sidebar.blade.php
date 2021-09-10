@@ -141,7 +141,7 @@
                     @endif
 
                     <li class="mt-5 {{ (request()->is('panel/webinars/purchases')) ? 'active' : '' }}">
-                        <a href="/panel/webinarss/purchases">My Courses</a>
+                        <a href="/panel/webinars/purchases">My Courses</a>
                     </li>
                      <li class="mt-5 {{ (request()->is('panel/assignments')) ? 'active' : '' }}">
                         <a href="/panel/assignments">My Assignments</a>

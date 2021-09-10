@@ -641,6 +641,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         if (!empty($request->get('avatar', null))) {
+            
             $user->avatar = $request->get('avatar', null);
         }
 
