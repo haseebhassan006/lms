@@ -22,7 +22,7 @@
             <div class="row">
                 @if(!empty($paymentChannels))
                     @foreach($paymentChannels as $paymentChannel)
-                        <div class="col-6 col-lg-4 mb-40 charge-account-radio">
+                        <div class="col-6 col-lg-4 mb-40 charge-account-radio" id="gatwayCard">
                             <input type="radio" name="gateway" id="{{ $paymentChannel->title }}" data-class="{{ $paymentChannel->class_name }}" value="{{ $paymentChannel->id }}">
                             <label for="{{ $paymentChannel->title }}" class="rounded-sm p-20 p-lg-45 d-flex flex-column align-items-center justify-content-center">
                                 <img src="{{ $paymentChannel->image }}" width="120" height="60" alt="">
@@ -36,8 +36,8 @@
                     @endforeach
                 @endif
 
-                <div class="col-6 col-lg-4 mb-40 charge-account-radio">
-                    <input type="radio" @if(empty($userCharge) or ($total > $userCharge)) disabled @endif name="gateway" id="offline" value="credit">
+                <div class="col-6 col-lg-4 mb-40 charge-account-radio" id="offlinePayment" >
+                    <input type="radio" @if(empty($userCharge) or ($total > $userCharge)) disabled @endif name="gateway" id="offline" value="credit" data-class="credit">
                     <label for="offline" class="rounded-sm p-20 p-lg-45 d-flex flex-column align-items-center justify-content-center">
                         <img src="/assets/default/img/activity/pay.svg" width="120" height="60" alt="">
 

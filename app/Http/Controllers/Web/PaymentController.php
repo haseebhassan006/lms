@@ -96,7 +96,7 @@ class PaymentController extends Controller
 
 
             $charge = Charge::create ([
-    
+
                      "amount" => $order->total_amount * 100,
                      "currency" => "usd",
                      "source" => $request->stripeToken,
@@ -111,9 +111,9 @@ class PaymentController extends Controller
             ];
                 return redirect('cart')->with(['toast' => $toastData]);
 
-           
-    
-           
+
+
+
             // $channelManager = ChannelManager::makeChannel($paymentChannel);
 
             // $redirect_url = $channelManager->paymentRequest($order);
@@ -124,13 +124,6 @@ class PaymentController extends Controller
 
             // return Redirect::away($redirect_url);
 
-        } catch (\Exception $exception) {
-            $toastData = [
-                'title' => trans('cart.fail_purchase'),
-                'msg' => trans('cart.gateway_error'),
-                'status' => 'error'
-            ];
-            return redirect('cart')->with(['toast' => $toastData]);
         }
     }
 
@@ -141,7 +134,7 @@ class PaymentController extends Controller
             ->first();
 
         try {
-           
+
             $channelManager = ChannelManager::makeChannel($paymentChannel);
             $order = $channelManager->verify($request);
 
@@ -178,10 +171,10 @@ class PaymentController extends Controller
 
     private function setPaymentAccounting($order, $type = null)
     {
-   
+
         if ($order->is_charge_account) {
            $s = Accounting::charge($order);
-           
+
         } else {
             foreach ($order->orderItems as $orderItem) {
                 $sale = Sale::createSales($orderItem, $order->payment_method);
