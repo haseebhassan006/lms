@@ -172,6 +172,19 @@
                                                     @enderror
                                                 </div>
                                             </div>
+
+                                            <div class="form-group mt-15">
+                                                <label class="input-label">Google Classroom Link ({{ trans('public.optional') }})</label>
+                                                <div class="input-group">
+
+                                                    <input type="text" name="classroom_link" id="classroom_link" value="{{ !empty($webinar) ? $webinar->classroom_link : old('classroom_link') }}" class="form-control @error('classroom_link')  is-invalid @enderror"/>
+                                                    @error('classroom_link')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 

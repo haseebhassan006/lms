@@ -293,6 +293,7 @@ class WebinarController extends Controller
 
         $webinar = Webinar::create([
             'type' => $data['type'],
+            'classroom_link' => $data['classroom_link'],
             'title' => $data['title'],
             'teacher_id' => $data['teacher_id'],
             'creator_id' => $data['teacher_id'],
@@ -410,6 +411,7 @@ class WebinarController extends Controller
             'teacherQuizzes' => $teacherQuizzes,
             'prerequisites' => $webinar->prerequisites,
             'webinarQuizzes' => $webinar->quizzes,
+            'classroom_link' =>$webinar->classroom_link,
             'webinarPartnerTeacher' => $webinar->webinarPartnerTeacher->keyby('teacher_id'),
             'webinarTags' => $tags,
         ];
