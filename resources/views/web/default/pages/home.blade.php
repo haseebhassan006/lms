@@ -1,9 +1,10 @@
 @extends(getTemplate().'.layouts.app')
 @push('styles_top')
     <link rel="stylesheet" href="/assets/default/vendors/swiper/swiper-bundle.min.css">
-    <link rel="stylesheet" href="/assets/default/vendors/owl-carousel2/owl.carousel.min.css">
-
+    <link rel="stylesheet" href="/assets/default/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 @endpush
+
 
 
 @section('content')
