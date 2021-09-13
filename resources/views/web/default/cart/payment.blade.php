@@ -36,7 +36,7 @@
                     @endforeach
                 @endif
 
-                <div class="col-6 col-lg-4 mb-40 charge-account-radio" id="offlinePayment" >
+                {{-- <div class="col-6 col-lg-4 mb-40 charge-account-radio" id="offlinePayment" >
                     <input type="radio" @if(empty($userCharge) or ($total > $userCharge)) disabled @endif name="gateway" id="offline" value="credit" data-class="credit">
                     <label for="offline" class="rounded-sm p-20 p-lg-45 d-flex flex-column align-items-center justify-content-center">
                         <img src="/assets/default/img/activity/pay.svg" width="120" height="60" alt="">
@@ -48,7 +48,7 @@
 
                         <span class="mt-5">{{ $currency }}{{ $userCharge }}</span>
                     </label>
-                </div>
+                </div> --}}
             </div>
             <div class="row " id="cardarea" style="display: none">
                 <div class="panel-body col-xl-12">
