@@ -99,10 +99,13 @@
                                            $progressTitle = trans('public.course_learning_passed',['percent' => $percent]);
                                     }
                                 @endphp
-
+     <p>{{ $percent }}%</p>
                                 <div class="progress cursor-pointer" data-toggle="tooltip" data-placement="top" title="{{ $progressTitle }}">
                                     <span class="progress-bar" style="width: {{ $percent }}%"></span>
+
+
                                 </div>
+
                             </div>
 
                             <div class="webinar-card-body w-100 d-flex flex-column">
