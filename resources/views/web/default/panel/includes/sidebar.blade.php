@@ -1,7 +1,12 @@
 <div class="xs-panel-nav d-flex d-lg-none justify-content-between py-5 px-15">
     <div class="user-info d-flex align-items-center justify-content-between">
         <div class="user-avatar">
-            <img src="{{ $authUser->getAvatar() }}" class="img-cover" alt="{{ $authUser->full_name }}">
+            {{-- <img src="{{ $authUser->getAvatar() }}" class="img-cover" alt="{{ $authUser->full_name }}"> --}}
+            @if (file_exists( $authUser->getAvatar()))
+                                                <img src="{{  $authUser->getAvatar() }}" alt="{{ $authUser->full_name }}">
+                                            @else
+                                                <img src="{{ asset('img/users/default-user.jpg') }}">
+                                            @endif
         </div>
 
         <div class="user-name ml-15">
@@ -128,6 +133,9 @@
                         <li class="mt-5 {{ (request()->is('panel/webinars')) ? 'active' : '' }}">
                             <a href="/panel/webinars">{{ trans('panel.my_classes') }}</a>
                         </li>
+                        <li class="mt-5 {{ (request()->is('panel/assignments')) ? 'active' : '' }}">
+                            <a href="">Assignments</a>
+                        </li>
 
                         <li class="mt-5 {{ (request()->is('panel/webinars/invitations')) ? 'active' : '' }}">
                             <a href="/panel/webinars/invitations">{{ trans('panel.invited_classes') }}</a>
@@ -143,14 +151,16 @@
                     <li class="mt-5 {{ (request()->is('panel/webinars/purchases')) ? 'active' : '' }}">
                         <a href="/panel/webinars/purchases">My Courses</a>
                     </li>
-                     <li class="mt-5 {{ (request()->is('panel/assignments')) ? 'active' : '' }}">
-                        <a href="/panel/assignments">My Assignments</a>
-                    </li>
+
 
                     @if($authUser->isOrganization() || $authUser->isTeacher())
+                    <li class="mt-5 {{ (request()->is('panel/assignments')) ? 'active' : '' }}">
+                        <a href="/panel/assignments">My Assignments</a>
+                    </li>
                         <li class="mt-5 {{ (request()->is('panel/webinars/comments')) ? 'active' : '' }}">
                             <a href="/panel/webinars/comments">{{ trans('panel.my_class_comments') }}</a>
                         </li>
+
                     @endif
                     {{--
                     <li class="mt-5 {{ (request()->is('panel/webinars/my-comments')) ? 'active' : '' }}">
