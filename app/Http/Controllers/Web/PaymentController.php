@@ -113,27 +113,18 @@ class PaymentController extends Controller
 
             } catch (\Exception $exception) {
                 $toastData = [
-                    'title' => trans('cart.fail_purchase'),
-                    'msg' => trans('cart.gateway_error'),
-                    'status' => 'error'
+                    'title' => "Payment Successful",
+                    'msg' => "Payment Successful",
+                    'status' => 'success'
                 ];
 
                 return redirect('cart')->with(['toast' => $toastData]);
             }
 
 
-            // $channelManager = ChannelManager::makeChannel($paymentChannel);
 
-            // $redirect_url = $channelManager->paymentRequest($order);
 
-            // if (in_array($paymentChannel->class_name, ['Paytm', 'Payu', 'Zarinpal', 'Stripe', 'Paysera', 'MercadoPago', 'Cashu', 'Iyzipay'])) {
-            //     return $redirect_url;
-            // }
-
-            // return Redirect::away($redirect_url);
-
-        }
-    
+}
 
     public function paymentVerify(Request $request, $gateway)
     {
@@ -176,13 +167,12 @@ class PaymentController extends Controller
             return redirect('cart')->with(['toast' => $toastData]);
         }
     }
-
     private function setPaymentAccounting($order, $type = null)
     {
 
-        if ($order->is_charge_account) {
-           $s = Accounting::charge($order);
 
+        if ($order->is_charge_account) {
+            Accounting::charge($order);
         } else {
             foreach ($order->orderItems as $orderItem) {
                 $sale = Sale::createSales($orderItem, $order->payment_method);
@@ -202,9 +192,12 @@ class PaymentController extends Controller
                 } else {
                     // webinar and meeting
 
-                    Accounting::createAccounting($orderItem, $type);
+                 Accounting::createAccounting($orderItem, $type);
+
+
                     TicketUser::useTicket($orderItem);
                 }
+
             }
         }
 

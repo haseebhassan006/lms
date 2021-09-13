@@ -93,6 +93,7 @@ class Sale extends Model
             'total_amount' => $orderItem->total_amount,
             'created_at' => time(),
         ]);
+     
 
         $title = '';
         if (!empty($orderItem->webinar_id)) {
