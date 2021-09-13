@@ -17231,7 +17231,7 @@ p {
 
 .social-login {
   border-radius: 8px;
-  border: solid 1px #ececec;
+  /* border: solid 1px #ececec; */
   background-color: #ffffff;
   font-size: 0.875rem;
 }

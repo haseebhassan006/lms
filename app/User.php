@@ -388,6 +388,7 @@ class User extends Authenticatable
             ->sum('amount');
 
         $balance = $additions - $deductions;
+
         return $balance > 0 ? $balance : 0;
     }
 

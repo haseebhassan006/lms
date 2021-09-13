@@ -124,7 +124,7 @@ class PaymentController extends Controller
 
 
 
-}
+    }
 
     public function paymentVerify(Request $request, $gateway)
     {

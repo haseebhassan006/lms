@@ -16,6 +16,7 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
+
         $user = auth()->user();
 
         $nextBadge = $user->getBadges(true, true);
@@ -59,7 +60,7 @@ class DashboardController extends Controller
             $webinars = Webinar::whereIn('id', $webinarsIds)
                 ->where('status', 'active')
                 ->get();
-                
+
 
             $webinars = Webinar::whereIn('id', $webinarsIds)
                 ->where('status', 'active')
@@ -80,7 +81,7 @@ class DashboardController extends Controller
                 ->get();
 
             $data['webinarsCount'] = count($webinars);
-         
+
             $data['supportsCount'] = count($supports);
             $data['commentsCount'] = count($comments);
             $data['reserveMeetingsCount'] = count($reserveMeetings);

@@ -56,8 +56,8 @@
 
     <section class="dashboard">
         <div class="row">
-            <div class="col-12 col-lg-3 mt-35">
-                <div class="bg-white account-balance rounded-sm panel-shadow py-15 py-md-30 px-10 px-md-20">
+            {{-- <div class="col-12 col-lg-3 mt-35">
+                {{-- <div class="bg-white account-balance rounded-sm panel-shadow py-15 py-md-30 px-10 px-md-20">
                     <div class="text-center">
                         <img src="/assets/default/img/activity/36.svg" class="account-balance-icon" alt="">
 
@@ -80,7 +80,7 @@
                         @endif
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="col-12 col-lg-3 mt-35">
                 <a href="@if($authUser->isUser()) /panel/webinars/purchases @else /panel/webinars @endif" class="bg-white dashboard-stats rounded-sm panel-shadow p-10 p-md-20 d-flex align-items-center">
@@ -127,7 +127,7 @@
             </div>
 
             <div class="col-12 col-lg-3 mt-35">
-          
+
                 {{-- <div class="bg-white account-balance rounded-sm panel-shadow py-15 py-md-15 px-10 px-md-20">
                     <div data-percent="{{ !empty($nextBadge) ? $nextBadge['percent'] : 0 }}" data-label="{{ (!empty($nextBadge) and !empty($nextBadge['earned'])) ? $nextBadge['earned']->title : '' }}" id="nextBadgeChart" class="text-center">
                     </div>
