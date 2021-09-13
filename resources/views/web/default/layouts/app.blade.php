@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('/assets/default/css/app.css') }}">
      <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet" >
      <link href="{{ asset('frontend/assets/css/responsive.css') }}" rel="stylesheet" >
+     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
     @if($isRtl)
     @php dd($idRtl) @endphp
