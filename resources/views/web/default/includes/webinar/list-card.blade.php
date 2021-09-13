@@ -25,6 +25,7 @@
                     <i data-feather="bell" width="20" height="20" class="webinar-icon"></i>
                 </a>
             @endif
+            
 
             @if($webinar->type == 'webinar')
                 <div class="progress ml-10">

@@ -18,18 +18,19 @@
             @endif
 
             <img src="{{ $webinar->getImage() }}" class="img-cover" alt="{{ $webinar->title }}">
-
-            @if($webinar->type == 'webinar')
+{{--@if($webinar->type == 'webinar') --}}
                 <div class="progress">
                     <span class="progress-bar" style="width: {{ $webinar->getProgress() }}%"></span>
+
                 </div>
+
 
                 <a href="{{ $webinar->addToCalendarLink() }}" target="_blank" class="webinar-notify d-flex align-items-center justify-content-center">
                     <i data-feather="bell" width="20" height="20" class="webinar-icon"></i>
                 </a>
-            @endif
+            {{-- @endif --}}
         </div>
-
+        <p>  {{ $webinar->getProgress() }}%</p>
         <figcaption class="webinar-card-body">
             <div class="user-inline-avatar d-flex align-items-center">
                 <div class="avatar">

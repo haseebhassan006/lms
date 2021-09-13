@@ -212,7 +212,11 @@
                             <td class="text-left">
                                 <div class="d-flex align-items-center">
                                     <figure class="avatar mr-2">
-                                        <img src="{{ asset($user->avatar) }}" alt="{{ $user->full_name }}">
+                                        @if (file_exists($user->getAvatar()))
+                                        <img src="{{ $user->avatar }}" alt="{{ $user->full_name }}">
+                                    @else
+                                        <img src="{{ asset('img/users/default-user.jpg') }}">
+                                    @endif
                                     </figure>
                                     <div class="media-body ml-1">
                                         <div class="mt-0 mb-1 font-weight-bold">{{ $user->full_name }}</div>
