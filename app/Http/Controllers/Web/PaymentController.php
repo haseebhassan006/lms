@@ -21,15 +21,15 @@ class PaymentController extends Controller
 {
     public function paymentRequest(Request $request)
     {
+
         $this->validate($request, [
             'gateway' => 'required'
         ]);
 
+
         $user = auth()->user();
         $gateway = $request->input('gateway');
-
         $orderId = $request->input('order_id');
-
         $order = Order::where('id', $orderId)
             ->where('user_id', $user->id)
             ->first();
@@ -39,6 +39,8 @@ class PaymentController extends Controller
             $reserveMeeting = ReserveMeeting::where('id', $orderItem->reserve_meeting_id)->first();
             $reserveMeeting->update(['locked_at' => time()]);
         }
+
+
 
         if ($gateway === 'credit') {
 

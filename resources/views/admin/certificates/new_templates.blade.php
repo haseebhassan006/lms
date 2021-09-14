@@ -35,7 +35,7 @@
 
  <form method="post"  action="/admin/certificates/templates/store" id="webinarForm" class="webinar-form">
 @else
-<form method="post"  action='{{ route('update.certificate',$template->id) }}' id="webinarForm" class="webinar-form">
+<form method="post"  action="{{ url('/admin/certificates/templates/'.$template->id.'/update') }}" id="webinarForm" class="webinar-form">
     @endif
 
                                     {{ csrf_field() }}

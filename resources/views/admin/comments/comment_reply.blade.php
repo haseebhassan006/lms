@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="card-body ">
-                            <form action="/admin/{{ $page }}/comments/{{ $comment->id }}/reply" method="post">
+                            <form action="/admin/{{ $page }}/comments/{{ $comment->id }}/reply" method="get">
                                 {{ csrf_field() }}
 
                                 <div class="form-group mt-15">

@@ -19,8 +19,8 @@ class CommentsController extends Controller
 
     public function __construct(Request $request)
     {
+
         $page = Route::current()->parameter('page');
-        $this->page = $page;
 
         if ($page == 'webinars') {
             $this->item = 'webinar';
@@ -143,7 +143,7 @@ class CommentsController extends Controller
                     '[c.title]' => $webinar->title,
                     '[u.name]' => $commentedUser->full_name
                 ];
-                sendNotification('new_comment', $notifyOptions, $webinar->teacher_id);
+                // sendNotification('new_comment', $notifyOptions, $webinar->teacher_id);
             }
         }
 
@@ -195,6 +195,7 @@ class CommentsController extends Controller
 
     public function reply($page, $comment_id)
     {
+        
         $this->authorize('admin_' . $this->item . '_comments_reply');
 
         $comment = Comment::where('id', $comment_id)
@@ -218,8 +219,8 @@ class CommentsController extends Controller
 
     public function storeReply(Request $request, $page, $comment_id)
     {
-        $this->authorize('admin_' . $this->item . '_comments_reply');
 
+        $this->authorize('admin_' . $this->item . '_comments_reply');
         $this->validate($request, [
             'comment' => 'required|string'
         ]);
