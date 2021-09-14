@@ -2,20 +2,22 @@
 
 namespace App;
 
-use App\Models\Accounting;
-use App\Models\Badge;
-use App\Models\Meeting;
-use App\Models\Noticeboard;
-use App\Models\Notification;
-use App\Models\Permission;
-use App\Models\QuizzesResult;
 use App\Models\Role;
-use App\Models\Follow;
 use App\Models\Sale;
+use App\Models\Badge;
+use App\Models\Follow;
+use App\Models\Meeting;
 use App\Models\Section;
 use App\Models\Webinar;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Accounting;
+use App\Models\Permission;
+use App\Models\Noticeboard;
+use App\Models\Notification;
+use App\Models\QuizzesResult;
+use App\Models\AssignmentUpload;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -390,6 +392,12 @@ class User extends Authenticatable
         $balance = $additions - $deductions;
 
         return $balance > 0 ? $balance : 0;
+    }
+
+    public function getUserAssignments(){
+        $assignments = AssignmentUpload::where('user_id','=',Auth::user()->id)->with('course')->get();
+        return $assignments;
+
     }
 
     public function getPurchaseAmounts()

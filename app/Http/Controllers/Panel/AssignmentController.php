@@ -13,10 +13,22 @@ use Illuminate\Support\Facades\Auth;
 
 class AssignmentController extends Controller
 {
-    public function index(){
+    public function index($id){
         $today=  date('Y-m-d');
-        $assignments = Assignment::whereDate('deadline', '>', Carbon::now())->with('course')->paginate(5);
+        $assignments = Assignment::whereDate('deadline', '>', Carbon::now())->where('webinar_id','=',$id)->with('course')->paginate(5);
         return view('web.default.panel.assignments.list',compact('assignments'));
+    }
+
+
+    public function myAssignments(){
+
+        $user = new User;
+        $assignments =  $user->getUserAssignments();
+
+        return view('web.default.panel.assignments.myassignments',compact('assignments'));
+
+
+
     }
 
     public function create(){

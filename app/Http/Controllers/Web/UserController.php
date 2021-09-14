@@ -90,6 +90,8 @@ class UserController extends Controller
             ->toArray();
         $user->students_count = count(array_unique($studentsIds));
 
+
+
         $data = [
             'pageTitle' => $user->full_name . ' ' . trans('public.profile'),
             'user' => $user,
@@ -105,6 +107,7 @@ class UserController extends Controller
             'occupations' => $occupations,
             'webinars' => $webinars,
             'appointments' => $appointments,
+         
         ];
 
         return view('web.default.user.profile', $data);

@@ -142,21 +142,21 @@
                         </li>
                     @endif
 
-                    @if(!empty($authUser->organ_id))
+                    {{-- @if(!empty($authUser->organ_id))
                         <li class="mt-5 {{ (request()->is('panel/webinars/organization_classes')) ? 'active' : '' }}">
                             <a href="/panel/webinars/organization_classes">{{ trans('panel.organization_classes') }}</a>
                         </li>
-                    @endif
+                    @endif --}}
 
                     <li class="mt-5 {{ (request()->is('panel/webinars/purchases')) ? 'active' : '' }}">
                         <a href="/panel/webinars/purchases">My Courses</a>
                     </li>
-
+                    <li class="mt-5 {{ (request()->is('panel/assignments/my/assignment/')) ? 'active' : '' }}">
+                        <a href="/panel/assignments/my/assignment">My Assignments</a>
+                    </li>
 
                     @if($authUser->isOrganization() || $authUser->isTeacher())
-                    <li class="mt-5 {{ (request()->is('panel/assignments')) ? 'active' : '' }}">
-                        <a href="/panel/assignments">My Assignments</a>
-                    </li>
+
                         <li class="mt-5 {{ (request()->is('panel/webinars/comments')) ? 'active' : '' }}">
                             <a href="/panel/webinars/comments">{{ trans('panel.my_class_comments') }}</a>
                         </li>

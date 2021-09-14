@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="section-header">
-    <h1>Assignments</h1>
+    <h1>My Assignments</h1>
     <div class="section-header-breadcrumb">
 
         <div class="breadcrumb-item"></div>
@@ -18,7 +18,6 @@
             <div class="card-body">
 
                 <div class="table-responsive">
-                    @if($assignments)
                     <table class="table table-striped font-14">
                         <tr>
                             <th>File</th>
@@ -27,7 +26,7 @@
                             <th>Deadline</th>
                             <th>Action</th>
                         </tr>
-                  
+                        @if($assignments)
                         @foreach($assignments as $assignment)
 
                             <tr>
@@ -55,21 +54,14 @@
                                 </td>
                             </tr>
                         @endforeach
-                       
+                        @endif
                     </table>
-                    @else
-                    
-            <div class="card-footer text-center">
-                <p>No Assignments Found</p>
-            </div>
-                    @endif
-                    
                 </div>
-               
+
             </div>
 
             <div class="card-footer text-center">
-                {{ $assignments->links() }}
+
             </div>
         </div>
     </div>
