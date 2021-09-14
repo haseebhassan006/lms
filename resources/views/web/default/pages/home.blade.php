@@ -438,7 +438,7 @@
     @endif --}}
 
     @if(!empty($instructors) and !$instructors->isEmpty())
-        <section class="home-sections container">
+        {{-- <section class="home-sections container">
             <div class="d-flex justify-content-between">
                 <div>
                     <h2 class="section-title">{{ trans('home.instructors') }}</h2>
@@ -481,7 +481,7 @@
                                         @else
                                             <a href="{{ $instructor->getProfileUrl() }}" class="btn btn-primary btn-sm rounded-pill mt-15">{{ trans('public.profile') }}</a>
                                         @endif --}}
-                                    </div>
+                                    {{-- </div>
                                 </div>
                             </div>
                         </div>
@@ -489,7 +489,7 @@
 
                 </div>
             </div>
-        </section>
+        </section>  --}}
     @endif
 
     {{-- Ads Bannaer --}}

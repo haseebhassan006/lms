@@ -17,10 +17,11 @@ class SubscribeController extends Controller
     {
 
 
+
         $user = auth()->user();
 
         $subscribe = Subscribe::getActiveSubscribe($user->id);
-
+     
         if (!$subscribe) {
             $toastData = [
                 'title' => trans('public.request_failed'),

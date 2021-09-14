@@ -4,7 +4,7 @@ font-family: 'Montserrat', sans-serif;
 font-family: 'Playfair Display', serif;
 */
 body{
-    font-family: 'Playfair Display', serif !important;
+    font-family: 'Montserrat', sans-serif !important;
 }
 p{
     font-family: 'Montserrat', sans-serif !important;
@@ -66,7 +66,7 @@ header .navbar-brand{
 }
 header .navbar-brand img{}
 header .navbar-nav {
-    
+
 }
 header .navbar-nav li{
     margin: 0 20px;
@@ -462,12 +462,12 @@ section.team .box:hover:before{
     background-color: rgba(255, 7,7,.5);
 }
 section.team .box:hover .overlay{
-  
+
 bottom: 100px;
-  
+
 transform: scale(1.1);
 }
-.slick-prev, 
+.slick-prev,
 .slick-next{
     background-color: #ff0707 !important;
     z-index: 9999;
@@ -599,11 +599,11 @@ section.category .sec-heading{
     margin: 0 0 20px;
 }
 section.category .sec-para{
-  
+
 margin: 0 auto 60px;
-  
+
 width: 50%;
-  
+
 text-align: center;
 }
 section.category .img-box{
@@ -713,9 +713,9 @@ section.client .box .media .media-body h4{
     left: 20px;
 }
 .slick-dots{
-  
+
 bottom: -60px !important;
-  
+
 position: relative;
 }
 .slick-dots li button{
