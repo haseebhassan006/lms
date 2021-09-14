@@ -298,7 +298,7 @@
     </div>
 
 
-    <section class="card">
+    {{-- <section class="card">
         <div class="card-body">
             <div class="section-title ml-0 mt-0 mb-3"><h4>{{trans('admin/main.hints')}}</h4></div>
             <div class="row">
@@ -326,5 +326,5 @@
 
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection

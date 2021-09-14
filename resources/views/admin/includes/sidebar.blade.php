@@ -696,7 +696,7 @@
             @endcan
 
             @can('admin_subscribe')
-                {{-- <li class="nav-item dropdown {{ (request()->is('admin/financial/subscribes*')) ? 'active' : '' }}">
+                <li class="nav-item dropdown {{ (request()->is('admin/financial/subscribes*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                         <i class="fas fa-cart-plus"></i>
                         <span>{{ trans('admin/main.subscribes') }}</span>
@@ -714,7 +714,7 @@
                             </li>
                         @endcan
                     </ul>
-                </li> --}}
+                </li>
             @endcan
 
             @if($authUser->can('admin_discount_codes') or
@@ -870,13 +870,12 @@
                             $settingClass = 'active';
                         }
                 @endphp
-
-                {{-- <li class="{{ $settingClass ?? '' }}">
+<li class="{{ $settingClass ?? '' }}">
                     <a href="/admin/settings" class="nav-link">
                         <i class="fas fa-cogs"></i>
                         <span>{{ trans('admin/main.settings') }}</span>
                     </a>
-                </li> --}}
+                </li>
             @endcan()
 
 

@@ -551,7 +551,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="position-relative">
-                                        <canvas id="usersStatisticsChart"></canvas>
+                                        <canvas id="saleStatisticsChart" width="1002" height="501" style="display: block; width: 1002px; height: 501px;" class="chartjs-render-monitor"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -564,6 +564,7 @@
 @endsection
 
 @push('scripts_bottom')
+
     <script src="/assets/default/vendors/chartjs/chart.min.js"></script>
     <script src="/assets/admin/vendor/owl.carousel/owl.carousel.min.js"></script>
 
