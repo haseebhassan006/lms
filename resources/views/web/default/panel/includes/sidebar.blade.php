@@ -233,7 +233,16 @@
                 </ul>
             </div>
         </li>
-
+   @if($authUser->isUser())
+   <li class="sidenav-item {{ (request()->is('/cart/')) ? 'sidenav-item-active' : '' }}">
+    <a href="/cart/" class="d-flex align-items-center">
+    <span class="sidenav-notification-icon sidenav-item-icon mr-10">
+        <i data-feather="shopping-cart" width="20" height="20" class="mr-10"></i>
+        </span>
+        <span class="font-14 text-dark-blue font-weight-500">My Cart</span>
+    </a>
+</li>
+   @endif
         <li class="sidenav-item {{ (request()->is('panel/certificates') or request()->is('panel/certificates/*')) ? 'sidenav-item-active' : '' }}">
             <a class="d-flex align-items-center" data-toggle="collapse" href="#certificatesCollapse" role="button" aria-expanded="false" aria-controls="certificatesCollapse">
                 <span class="sidenav-item-icon mr-10">
@@ -256,6 +265,7 @@
                 </ul>
             </div>
         </li>
+        
 
         <li class="sidenav-item {{ (request()->is('panel/financial') or request()->is('panel/financial/*')) ? 'sidenav-item-active' : '' }}">
             <a class="d-flex align-items-center" data-toggle="collapse" href="#financialCollapse" role="button" aria-expanded="false" aria-controls="financialCollapse">
