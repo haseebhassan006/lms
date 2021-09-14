@@ -43,7 +43,11 @@
 
                         <div class="form-group">
                             <label class="control-label" for="inputDefault">Title</label>
+                            @if(isset($template))
+                            <input type="text" name="title" class="form-control " value="{{ $template->title }}">
+                            @else
                             <input type="text" name="title" class="form-control " value="">
+                            @endif
                             <div class="invalid-feedback"></div>
                         </div>
 
@@ -55,49 +59,80 @@
                                         <i class="fa fa-upload"></i>
                                     </button>
                                 </div>
+                                @if(isset($template))
+                                <input type="text" name="image" class="form-control " value="{{ $template->image }}">
+                                @else
                                 <input type="text" name="image" id="image" value="" class="form-control "/>
+                                @endif
+
                                 <div class="invalid-feedback"></div>
                             </div>
                             <div class="invalid-feedback"></div>
                         </div>
 
                         <div class="row">
-                            <dov class="col-md-6">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label" for="inputDefault">Position X</label>
+
+                                    @if(isset($template))
+
+                                    <input type="text" name="position_x" class="form-control " value="{{ $template->position_x }}">
+                                    @else
                                     <input type="text" name="position_x" class="form-control " value="">
+                                    @endif
                                     <div class="invalid-feedback"></div>
                                 </div>
-                            </dov>
-                            <dov class="col-md-6">
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label" for="inputDefault">Position Y</label>
+                                    @if(isset($template))
+
+                                    <input type="text" name="position_y" class="form-control " value="{{ $template->position_y }}">
+                                    @else
                                     <input type="text" name="position_y" class="form-control " value="">
+                                    @endif
                                     <div class="invalid-feedback"></div>
                                 </div>
-                            </dov>
+                            </div>
 
-                            <dov class="col-md-6">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label" for="inputDefault">Font Size</label>
+
+                                    @if(isset($template))
+                                    <input type="text" name="font_size" class="form-control " value="{{ $template->font_size }}">
+                                    @else
                                     <input type="text" name="font_size" class="form-control " value="">
+                                    @endif
                                     <div class="invalid-feedback"></div>
                                 </div>
-                            </dov>
-                            <dov class="col-md-6">
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label" for="inputDefault">Text Color</label>
+
+                                    @if(isset($template))
+                                    <input type="text" name="text_color" class="form-control " value="{{ $template->text_color }}">
+                                    @else
                                     <input type="text" name="text_color" class="form-control " value="">
+                                    @endif
                                     <div class="invalid-feedback"></div>
                                     <div>Example: #e1e1e1</div>
                                 </div>
-                            </dov>
+                            </div>
                         </div>
 
 
                         <div class="form-group ">
                             <label class="control-label" for="inputDefault">Text</label>
+
+                            @if(isset($template))
+                            <input type="text"  name="body" class="form-control " value="{{ $template->body }}">
+                            @else
                             <textarea class="form-control text-left h-auto " dir="ltr" rows="6" name="body"></textarea>
+                            @endif
                             <div class="invalid-feedback"></div>
                         </div>
 

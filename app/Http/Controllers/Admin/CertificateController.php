@@ -136,6 +136,7 @@ class CertificateController extends Controller
             'status' => $status,
         ];
 
+
         if ($status == 'publish') { // set draft for other templates
             CertificateTemplate::where('status', 'publish')
                 ->update([
@@ -157,6 +158,7 @@ class CertificateController extends Controller
 
     public function CertificatesTemplatePreview(Request $request)
     {
+
         $this->authorize('admin_certificate_template_create');
 
         $data = [
@@ -167,6 +169,7 @@ class CertificateController extends Controller
             'font_size' => (int)$request->get('font_size', 26),
             'text_color' => $request->get('text_color', '#e1e1e1'),
         ];
+
 
         $body = str_replace('[student]', 'student name', $data['body']);
         $body = str_replace('[course]', 'course name', $body);
@@ -186,9 +189,11 @@ class CertificateController extends Controller
 
     public function CertificatesTemplatesEdit($template_id)
     {
+
         $this->authorize('admin_certificate_template_edit');
 
         $template = CertificateTemplate::findOrFail($template_id);
+
 
         $data = [
             'pageTitle' => trans('admin/main.certificate_template_edit_page_title'),

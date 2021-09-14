@@ -542,8 +542,7 @@
                             <h4>{{trans('admin/main.new_registration_statistics')}}</h4>
                             <div class="card-header-action">
                                 <div class="btn-group">
-                                    {{--<a href="#" class="btn">Views
-                                    </a>--}}
+                                    <canvas id="usersStatisticsChart" width="1543" height="771" style="display: block; width: 1543px; height: 771px;" class="chartjs-render-monitor"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -551,7 +550,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="position-relative">
-                                        <canvas id="saleStatisticsChart" width="1002" height="501" style="display: block; width: 1002px; height: 501px;" class="chartjs-render-monitor"></canvas>
+                                        <canvas id="saleStatisticsChart"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -565,21 +564,101 @@
 
 @push('scripts_bottom')
 
-    <script src="/assets/default/vendors/chartjs/chart.min.js"></script>
+<script src="/assets/default/vendors/chartjs/chart.min.js"></script>
     <script src="/assets/admin/vendor/owl.carousel/owl.carousel.min.js"></script>
 
-    <script src="/assets/admin/js/dashboard.js"></script>
-
     <script>
-        (function ($) {
-            "use strict";
-            @if(!empty($getMonthAndYearSalesChart))
-            makeStatisticsChart('saleStatisticsChart', saleStatisticsChart, 'Sale', @json($getMonthAndYearSalesChart['labels']),@json($getMonthAndYearSalesChart['data']));
-            @endif
+        (function () {
+    "use strict";
 
-            @if(!empty($usersStatisticsChart))
+    var saleStatisticsChart = document.getElementById("saleStatisticsChart").getContext('2d');
+
+    var usersStatisticsChart = document.getElementById("usersStatisticsChart").getContext('2d');
+    var chart = {};
+
+    function makeStatisticsChart(name, section, badge, labels, datasets) {
+        chart[name] = new Chart(section, {
+            type: 'line',
+
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: badge,
+                    data: datasets,
+                    borderWidth: 5,
+                    borderColor: '#6777ef',
+                    backgroundColor: 'transparent',
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#6777ef',
+                    pointRadius: 4
+                }]
+            },
+            options: {
+
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            display: false,
+                            drawBorder: false,
+                        },
+                        ticks: {
+                            stepSize: 150
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            color: '#fbfbfb',
+                            lineWidth: 2
+                        }
+                    }]
+                },
+            }
+        });
+    }
+
+    function getSaleStatisticsData(type) {
+        $.post('/admin/dashboard/getSaleStatisticsData', {type: type}, function (result) {
+            if (result && result.code == 200) {
+                if (chart && chart.saleStatisticsChart) {
+                    chart.saleStatisticsChart.destroy();
+                }
+
+                makeStatisticsChart('saleStatisticsChart', saleStatisticsChart, 'Sale', result.chart.labels, result.chart.data);
+            }
+        })
+    }
+
+    $('body').on('click', '.js-sale-chart-month', function (e) {
+        e.preventDefault();
+
+        $(this).addClass('btn-primary');
+        $('.js-sale-chart-year').removeClass('btn-primary');
+
+        getSaleStatisticsData('day_of_month');
+    });
+
+    $('body').on('click', '.js-sale-chart-year', function (e) {
+        e.preventDefault();
+
+        $(this).addClass('btn-primary');
+        $('.js-sale-chart-month').removeClass('btn-primary');
+
+        getSaleStatisticsData('month_of_year');
+    });
+        @if(!empty($getMonthAndYearSalesChart))
+            makeStatisticsChart('saleStatisticsChart', saleStatisticsChart, 'Sale', @json($getMonthAndYearSalesChart['labels']),@json($getMonthAndYearSalesChart['data']));
+        @endif
+
+        @if(!empty($usersStatisticsChart))
             makeStatisticsChart('usersStatisticsChart', usersStatisticsChart, 'Users', @json($usersStatisticsChart['labels']),@json($usersStatisticsChart['data']));
-            @endif
-        })(jQuery)
+        @endif
+
+})(jQuery);
+
     </script>
+
+
 @endpush

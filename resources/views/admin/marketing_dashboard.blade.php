@@ -365,19 +365,123 @@
 @push('scripts_bottom')
     <script src="/assets/default/vendors/chartjs/chart.min.js"></script>
     <script src="/assets/admin/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script>
+    (function () {
+        "use strict";
 
-    <script src="/assets/admin/js/marketing_dashboard.js"></script>
+        var classesStatisticsChart = document.getElementById("classesStatisticsChart").getContext('2d');
+        var netProfitChart = document.getElementById("netProfitChart").getContext('2d');
+        var chart;
 
-    <script>
-        (function ($) {
-            "use strict";
-            @if(!empty($getClassesStatistics))
+        function makeClassesStatisticsChart(badge, labels, datasets) {
+            new Chart(classesStatisticsChart, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: badge,
+                        data: datasets,
+                        borderWidth: 0,
+                        borderColor: '#6777ef',
+                        backgroundColor: ['#43d477', '#1f3b64', '#ffab00'],
+                        pointBackgroundColor: '#fff',
+                        pointBorderColor: '#6777ef',
+                        pointRadius: 4,
+                        fill: true,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    segmentShowStroke: false
+                }
+            });
+        }
+
+        function makeNetProfitChart(badge, labels, datasets) {
+            chart = new Chart(netProfitChart, {
+                type: 'line',
+
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: badge,
+                        data: datasets,
+                        borderWidth: 5,
+                        borderColor: '#6777ef',
+                        backgroundColor: 'transparent',
+                        pointBackgroundColor: '#fff',
+                        pointBorderColor: '#6777ef',
+                        pointRadius: 4,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        yAxes: [{
+                            gridLines: {
+                                display: false,
+                                drawBorder: false,
+                            },
+                            ticks: {
+                                stepSize: 150
+                            }
+                        }],
+                        xAxes: [{
+                            gridLines: {
+                                color: '#fbfbfb',
+                                lineWidth: 2
+                            }
+                        }]
+                    },
+                }
+            });
+        }
+
+        function getSaleStatisticsData(type) {
+            $.post('/admin/marketing/getNetProfitChart', {type: type}, function (result) {
+                if (result && result.code == 200) {
+                    if (chart) {
+                        chart.destroy();
+                    }
+
+                    makeNetProfitChart('Sale', result.chart.labels, result.chart.data);
+                }
+            })
+        }
+
+        $('body').on('click', '.js-sale-chart-month', function (e) {
+            e.preventDefault();
+
+            $(this).addClass('btn-primary');
+            $('.js-sale-chart-year').removeClass('btn-primary');
+
+            getSaleStatisticsData('day_of_month');
+        });
+
+        $('body').on('click', '.js-sale-chart-year', function (e) {
+            e.preventDefault();
+
+            $(this).addClass('btn-primary');
+            $('.js-sale-chart-month').removeClass('btn-primary');
+
+            getSaleStatisticsData('month_of_year');
+        });
+
+        @if(!empty($getClassesStatistics))
             makeClassesStatisticsChart('', @json($getClassesStatistics['labels']),@json($getClassesStatistics['data']));
             @endif
 
             @if(!empty($getNetProfitChart))
             makeNetProfitChart('Income', @json($getNetProfitChart['labels']),@json($getNetProfitChart['data']));
-            @endif
-        })(jQuery)
+        @endif
+
+    })(jQuery);
+
+
     </script>
 @endpush
