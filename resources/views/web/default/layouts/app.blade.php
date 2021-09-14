@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('/assets/default/css/app.css') }}">
      <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet" >
      <link href="{{ asset('frontend/assets/css/responsive.css') }}" rel="stylesheet" >
-  
+
 
     @if($isRtl)
     @php dd($idRtl) @endphp

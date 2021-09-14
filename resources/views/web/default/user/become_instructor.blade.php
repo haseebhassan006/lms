@@ -1,6 +1,4 @@
 @extends(getTemplate().'.layouts.app')
-
-
 @section('content')
     <div class="container">
 
@@ -126,6 +124,17 @@
 
 @push('scripts_bottom')
     <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+<script>
+    (function ($) {
+    "use strict";
 
-    <script src="/assets/default/js/part/become_instructor.min.js"></script>
+    $('body').on('click', '.panel-file-manager', function (e) {
+      e.preventDefault();
+      $(this).filemanager('file', {
+        prefix: '/laravel-filemanager'
+      });
+    });
+  })(jQuery);
+</script>
+
 @endpush

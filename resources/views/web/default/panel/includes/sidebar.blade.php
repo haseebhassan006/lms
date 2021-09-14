@@ -27,7 +27,11 @@
 
     <div class="user-info d-flex align-items-center flex-row flex-lg-column justify-content-lg-center">
         <a href="/panel" class="user-avatar">
-            <img src="{{ asset($authUser->avatar) }}" class="img-cover" alt="{{ $authUser->full_name }}">
+            @if (file_exists($authUser->getAvatar()))
+                             <img src="{{ $authUser->getAvatar() }}" alt="{{ $authUser->full_name }}">
+                        @else
+                             <img src="{{ asset('img/users/default-user.jpg') }}" style="width:70px">
+                        @endif
         </a>
 
         <div class="d-flex flex-column align-items-center justify-content-center">
@@ -236,8 +240,8 @@
    @if($authUser->isUser())
    <li class="sidenav-item {{ (request()->is('/cart/')) ? 'sidenav-item-active' : '' }}">
     <a href="/cart/" class="d-flex align-items-center">
-    <span class="sidenav-notification-icon sidenav-item-icon mr-10">
-        <i data-feather="shopping-cart" width="20" height="20" class="mr-10"></i>
+    <span class="sidenav-item-icon mr-10">
+        @include('web.default.panel.includes.sidebar_icons.cart')
         </span>
         <span class="font-14 text-dark-blue font-weight-500">My Cart</span>
     </a>
@@ -265,7 +269,7 @@
                 </ul>
             </div>
         </li>
-        
+
 
         <li class="sidenav-item {{ (request()->is('panel/financial') or request()->is('panel/financial/*')) ? 'sidenav-item-active' : '' }}">
             <a class="d-flex align-items-center" data-toggle="collapse" href="#financialCollapse" role="button" aria-expanded="false" aria-controls="financialCollapse">

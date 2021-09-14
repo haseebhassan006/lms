@@ -105,6 +105,7 @@ class PaymentController extends Controller
                      "description" => "Test payment from mojavilms."
              ]);
              $this->setPaymentAccounting($order);
+             Cart::where('creator_id', $order->user_id)->delete();
 
              $toastData = [
                 'title' => "Payment Successful",
