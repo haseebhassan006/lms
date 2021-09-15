@@ -128,14 +128,14 @@
 
             <div class="col-12 col-lg-3 mt-35">
 
-                {{-- <div class="bg-white account-balance rounded-sm panel-shadow py-15 py-md-15 px-10 px-md-20">
+                <div class="bg-white account-balance rounded-sm panel-shadow py-15 py-md-15 px-10 px-md-20">
                     <div data-percent="{{ !empty($nextBadge) ? $nextBadge['percent'] : 0 }}" data-label="{{ (!empty($nextBadge) and !empty($nextBadge['earned'])) ? $nextBadge['earned']->title : '' }}" id="nextBadgeChart" class="text-center">
                     </div>
                     <div class="mt-10 pt-10 border-top border-gray300 d-flex align-items-center justify-content-between">
                         <span class="font-16 font-weight-500 text-gray">{{ trans('panel.next_badge') }}:</span>
                         <span class="font-16 font-weight-bold text-secondary">{{ (!empty($nextBadge) and !empty($nextBadge['badge'])) ? $nextBadge['badge']->title : trans('public.not_defined') }}</span>
                     </div>
-                </div> --}}
+                </div>
             </div>
         </div>
 
