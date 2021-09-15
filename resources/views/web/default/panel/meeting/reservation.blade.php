@@ -263,8 +263,7 @@
 
 @push('scripts_bottom')
     <script>
-        ;(function (){ 
-        'use strict'
+
         var instructor_contact_information_lang = '{{ trans('panel.instructor_contact_information') }}';
         var student_contact_information_lang = '{{ trans('panel.student_contact_information') }}';
         var email_lang = '{{ trans('public.email') }}';
@@ -278,9 +277,64 @@
         var finishReserveSuccessHint = '{{ trans('meeting.finish_reserve_modal_success_hint') }}';
         var finishReserveFail = '{{ trans('meeting.finish_reserve_modal_fail') }}';
         var finishReserveFailHint = '{{ trans('meeting.finish_reserve_modal_fail_hint') }}';
-        }())
+    
     </script>
     <script src="/assets/default/vendors/daterangepicker/daterangepicker.min.js"></script>
     <script src="/assets/default/js/panel/meeting/contact-info.min.js"></script>
-    <script src="/assets/default/js/panel/meeting/reserve_meeting.min.js"></script>
+    <script >
+
+  $('body').on('click', '.js-finish-meeting-reserve', function (e) {
+    e.preventDefault();
+    var reserve_id = $(this).attr('data-id');
+    var action = '/panel/meetings/' + reserve_id + '/finish';
+    var html = '<div class="">\n' + '    <p class=""></p>\n' + '    <div class="mt-30 d-flex align-items-center justify-content-center">\n' + '        <button type="button" id="finishReserve" data-href="' + action + '" class="btn btn-sm btn-primary">Confirm</button>\n' + '        <button type="button" class="btn btn-sm btn-danger ml-10 close-swl">Cancel</button>\n' + '    </div>\n' + '</div>';
+    Swal.fire({
+      title: "Finish Meeting",
+      html: html,
+      icon: 'warning',
+      showConfirmButton: false,
+      showCancelButton: false,
+      allowOutsideClick: function allowOutsideClick() {
+        return !Swal.isLoading();
+      }
+    });
+  });
+  $('body').on('click', '#finishReserve', function (e) {
+    e.preventDefault();
+    var $this = $(this);
+    var href = $this.attr('data-href');
+    $this.addClass('loadingbar primary').prop('disabled', true);
+    $.get(href, function (result) {
+      if (result && result.code === 200) {
+        Swal.fire({
+          title: finishReserveSuccess,
+          text: finishReserveSuccessHint,
+          showConfirmButton: false,
+          icon: 'success'
+        });
+        setTimeout(function () {
+          if (typeof result.redirect_to !== "undefined" && result.redirect_to !== undefined && result.redirect_to !== null && result.redirect_to !== '') {
+            window.location.href = result.redirect_to;
+          } else {
+            window.location.reload();
+          }
+        }, 1000);
+      } else {
+        Swal.fire({
+          title: "Confirm",
+          text: "Finish Fail",
+          icon: 'error'
+        });
+      }
+    }).error(function (err) {
+      Swal.fire({
+        title: "Finish Fail",
+        text: "Finish Revere",
+        icon: 'error'
+      });
+    }).always(function () {
+      $this.removeClass('loadingbar primary').prop('disabled', false);
+    });
+  });
+    </script>
 @endpush
