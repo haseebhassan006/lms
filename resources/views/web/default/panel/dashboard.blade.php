@@ -165,7 +165,7 @@
                     @endforeach
 
                 </div>
-            </div>
+            </div>--}}
 
             <div class="col-12 col-lg-6 mt-35">
                 <div class="bg-white monthly-sales-card rounded-sm panel-shadow py-10 py-md-20 px-15 px-md-30">
@@ -179,7 +179,7 @@
                         <canvas id="myChart"></canvas>
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
     </section>
 
@@ -217,12 +217,12 @@
     <script src="/assets/default/vendors/chartjs/chart.min.js"></script>
 
     <script>
-        ;(function (){
-        'use strict'
+
+
         var offlineSuccess = '{{ trans('panel.offline_success') }}';
         var $chartDataMonths = @json($monthlyChart['months']);
         var $chartData = @json($monthlyChart['data']);
-        }())
+
     </script>
 
     <script src="/assets/default/js/panel/dashboard.min.js"></script>

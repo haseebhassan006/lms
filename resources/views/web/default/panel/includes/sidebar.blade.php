@@ -28,7 +28,7 @@
     <div class="user-info d-flex align-items-center flex-row flex-lg-column justify-content-lg-center">
         <a href="/panel" class="user-avatar">
             @if (file_exists($authUser->getAvatar()))
-                             <img src="{{ $authUser->getAvatar() }}" alt="{{ $authUser->full_name }}">
+                             <img src="{{ $authUser->getAvatar() }}" alt="{{ $authUser->full_name }}" style="width:70px">
                         @else
                              <img src="{{ asset('img/users/default-user.jpg') }}" style="width:70px">
                         @endif
