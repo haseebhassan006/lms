@@ -161,7 +161,7 @@
             </div>
         </form>
     </section>
-
+{{--
     <section class="mt-40">
         <h2 class="section-title">{{ trans('financial.bank_accounts_information') }}</h2>
 
@@ -199,7 +199,7 @@
                 @endforeach
             @endif
         </div>
-    </section>
+    </section> --}}
 
     @if($offlinePayments->count() > 0)
         <section class="mt-40">
