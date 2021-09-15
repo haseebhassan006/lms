@@ -34,7 +34,12 @@
         <figcaption class="webinar-card-body">
             <div class="user-inline-avatar d-flex align-items-center">
                 <div class="avatar">
+
+                    @if (file_exists($user->getAvatar()))
                     <img src="{{ $webinar->teacher->getAvatar() }}" class="img-cover" alt="{{ $webinar->teacher->full_name }}">
+                                            @else
+                                                <img src="{{ asset('img/users/default-user.jpg') }}" alt="{{ $webinar->teacher->full_name }}">
+                                            @endif
                 </div>
                 <a href="{{ $webinar->teacher->getProfileUrl() }}" target="_blank" class="user-name ml-5 font-14">{{ $webinar->teacher->full_name }}</a>
             </div>
