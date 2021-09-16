@@ -47,7 +47,17 @@
 
                             @foreach($support->conversations as $conversations)
                                 <div class="chat-item chat-{{ !empty($conversations->sender_id) ? 'right' : 'left' }}">
-                                    <img src="{{ !empty($conversations->sender_id) ? $conversations->sender->getAvatar() : $conversations->supporter->getAvatar() }}">
+                                    {{-- <img src="{{ !empty($conversations->sender_id) ? $conversations->sender->getAvatar() : $conversations->supporter->getAvatar() }}"> --}}
+                                    @if (!empty($conversations->sender_id))
+
+                                    <img  class="rounded-circle" src="{{ file_exists($conversations->sender->getAvatar())  ? $conversations->sender->getAvatar() : asset('img/users/default-user.jpg') }}" >
+                                    @else
+                                    <img  class="rounded-circle" src="{{ file_exists($conversations->supporter->getAvatar()) ? $conversations->supporter->getAvatar() : asset('img/users/default-user.jpg') }}" >
+
+
+
+
+                                    @endif
 
                                     <div class="chat-details">
 
