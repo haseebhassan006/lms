@@ -134,15 +134,14 @@
     <script src="/assets/default/vendors/moment.min.js"></script>
     <script src="/assets/default/vendors/daterangepicker/daterangepicker.min.js"></script>
     <script>
-        ;(function (){ 
-        'use strict'
+
         var commentLang = '{{ trans('panel.comment') }}';
         var replyToCommentLang = '{{ trans('panel.reply_to_the_comment') }}';
         var editCommentLang = '{{ trans('panel.edit_comment') }}';
         var saveLang = '{{ trans('public.save') }}';
         var closeLang = '{{ trans('public.close') }}';
         var failedLang = '{{ trans('quiz.failed') }}';
-        }())
+
     </script>
     <script src="/assets/default/js/panel/comments.min.js"></script>
 @endpush

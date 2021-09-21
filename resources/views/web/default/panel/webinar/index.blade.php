@@ -226,7 +226,7 @@
                                             <span class="stat-value">{{ ($webinar->downloadable) ? trans('public.yes') : trans('public.no') }}</span>
                                         </div>
                                     @endif
-                                    
+
 
                                     <div class="d-flex align-items-start flex-column mt-20 mr-15">
                                         <span class="stat-title">{{ trans('panel.sales') }}:</span>
@@ -278,11 +278,10 @@
     <script src="/assets/default/vendors/daterangepicker/daterangepicker.min.js"></script>
 
     <script>
-        ;(function (){ 
-        'use strict'
+
         var undefinedActiveSessionLang = '{{ trans('webinars.undefined_active_session') }}';
         var saveSuccessLang = '{{ trans('webinars.success_store') }}';
-        }())
+
     </script>
 
     <script src="/assets/default/js/panel/make_next_session.min.js"></script>

@@ -193,8 +193,7 @@
     <script src="/assets/default/vendors/moment.min.js"></script>
     <script src="/assets/default/vendors/daterangepicker/daterangepicker.min.js"></script>
     <script>
-        ;(function (){ 
-        'use strict'
+
         var commentLang = '{{ trans('panel.comment') }}';
         var replyToCommentLang = '{{ trans('panel.reply_to_the_comment') }}';
         var saveLang = '{{ trans('public.save') }}';
@@ -202,7 +201,7 @@
         var reportLang = '{{ trans('panel.report') }}';
         var reportSuccessLang = '{{ trans('panel.report_success') }}';
         var messageToReviewerLang = '{{ trans('public.message_to_reviewer') }}';
-        }())
+
     </script>
     <script src="/assets/default/js/panel/comments.min.js"></script>
 @endpush

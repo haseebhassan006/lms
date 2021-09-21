@@ -130,10 +130,10 @@
                                             @if(!empty($webinar->downloadable) or (!empty($webinar->files) and count($webinar->files)))
                                                 <a href="{{ $webinar->getUrl() }}?tab=content" target="_blank" class="webinar-actions d-block mt-10">{{ trans('home.download') }}</a>
                                             @endif
-                                            
-                                            
+
+
                                                 <a href="/panel/assignments/{{$webinar->id}}" target="_blank" class="webinar-actions d-block mt-10">Assignments</a>
-                                          
+
                                             @if(!empty($webinar->classroom_link))
                                             <a href="{{ $webinar->classroom_link }}" target="_blank" class="webinar-actions d-block mt-10">Google ClassRoom</a>
                                          @endif
@@ -232,10 +232,9 @@
 
 @push('scripts_bottom')
     <script>
-        ;(function (){
-        'use strict'
+
         var undefinedActiveSessionLang = '{{ trans('webinars.undefined_active_session') }}';
-        }())
+     
     </script>
 
     <script src="/assets/default/js/panel/join_webinar.min.js"></script>

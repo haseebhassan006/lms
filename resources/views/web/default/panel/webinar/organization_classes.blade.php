@@ -274,11 +274,10 @@
     <script src="/assets/default/vendors/daterangepicker/daterangepicker.min.js"></script>
 
     <script>
-        ;(function (){ 
-        'use strict'
+
         var undefinedActiveSessionLang = '{{ trans('webinars.undefined_active_session') }}';
         var saveSuccessLang = '{{ trans('webinars.success_store') }}';
-        }())
+        
     </script>
 
     <script src="/assets/default/js/panel/make_next_session.min.js"></script>
