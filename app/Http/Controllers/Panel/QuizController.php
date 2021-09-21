@@ -125,7 +125,9 @@ class QuizController extends Controller
 
     public function store(Request $request)
     {
+
         $data = $request->get('ajax');
+      
         $rules = [
             'title' => 'required|max:255',
             'webinar_id' => 'nullable',
@@ -356,15 +358,15 @@ class QuizController extends Controller
                     ->first();
 
                 if (!empty($quizResult)) {
-                   
+
                     $passMark = $quiz->pass_mark;
                     $totalMark = 0;
                     $status = '';
 
                     if (!empty($results)) {
-                        
+
                         foreach ($results as $questionId => $result) {
-                           
+
                             if (!is_array($result)) {
                                 unset($results[$questionId]);
 
@@ -401,14 +403,14 @@ class QuizController extends Controller
                     }
 
                     $results["attempt_number"] = $request->get('attempt_number');
-                   
+
                     $quizResult->update([
                         'results' => json_encode($results),
                         'user_grade' => $totalMark,
                         'status' => $status,
                         'created_at' => time()
                     ]);
-                 
+
 
                     if ($quizResult->status == QuizzesResult::$waiting) {
                         $notifyOptions = [

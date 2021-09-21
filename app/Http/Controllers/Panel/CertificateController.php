@@ -18,7 +18,9 @@ class CertificateController extends Controller
 
     public function lists(Request $request)
     {
+       
         $user = auth()->user();
+       
 
         if (!$user->isUser()) {
             $query = Quiz::where('creator_id', $user->id)
@@ -40,12 +42,13 @@ class CertificateController extends Controller
 
             $quizzes = $query->with([
                 'webinar',
+
                 'certificates',
                 'quizResults' => function ($query) {
                     $query->orderBy('id', 'desc');
                 },
             ])->paginate(10);
-
+      
             foreach ($quizzes as $quiz) {
                 $quizResults = $quiz->quizResults;
 
@@ -59,6 +62,7 @@ class CertificateController extends Controller
                 })
                 ->where('status', 'active')
                 ->get();
+              
 
             $data = [
                 'pageTitle' => trans('quiz.certificates_lists'),
@@ -70,6 +74,7 @@ class CertificateController extends Controller
                 'userWebinars' => $userWebinars,
                 'userAllQuizzes' => $userAllQuizzes,
             ];
+   
 
             return view('web.default.panel.certificates.list', $data);
         }
@@ -97,6 +102,7 @@ class CertificateController extends Controller
 
         $query = Quiz::whereIn('id', $quizzesIds)
             ->where('status', Quiz::ACTIVE);
+       
 
         $certificatesCount = deepClone($query)->count();
 

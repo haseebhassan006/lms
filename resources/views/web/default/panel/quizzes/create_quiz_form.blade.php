@@ -11,7 +11,10 @@
                         <div class="form-group mt-25">
                             <label class="input-label">{{ trans('panel.webinar') }}</label>
                             <select name="ajax[webinar_id]" class="js-ajax-webinar_id custom-select">
-                              <option>Paid Plugin</option>
+                                <option selected="" disabled="" value="">Select a class</option>
+                                @foreach($webinars as $webinar)
+                                <option value="{{ $webinar->id }}">{{$webinar->title}}</option>
+                                @endforeach
                             </select>
                         </div>
                     @else

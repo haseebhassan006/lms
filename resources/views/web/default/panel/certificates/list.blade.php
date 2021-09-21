@@ -87,10 +87,12 @@
                         <div class="col-12 col-lg-4">
                             <div class="form-group">
                                 <label class="input-label">{{ trans('product.course') }}</label>
+                           
                                 <select name="webinar_id" class="form-control">
                                     <option value="all">{{ trans('webinars.all_courses') }}</option>
 
                                     @foreach($userWebinars as $userWebinar)
+                                   
                                         <option value="{{ $userWebinar->id }}" @if(request()->get('webinar_id','') == $userWebinar->id) selected @endif>{{ $userWebinar->title }}</option>
                                     @endforeach
                                 </select>
@@ -150,10 +152,11 @@
                                 <tbody>
 
                                 @foreach($quizzes as $quiz)
+                 
                                     <tr>
                                         <td class="text-left">
-                                            <span class="d-block text-dark-blue font-weight-500">{{ $quiz->title }}</span>
-                                            <span class="d-block mt-5 font-12 text-gray">{{ $quiz->webinar->title }}</span>
+                                         <span class="d-block text-dark-blue font-weight-500">{{ $quiz->title }}</span>
+                                          {{-- <span class="d-block mt-5 font-12 text-gray">{{ $web->title }}</span>  --}}
                                         </td>
                                         <td class="align-middle">
                                             <span class="text-dark-blue font-weight-500">{{ $quiz->pass_mark }}</span>
@@ -166,7 +169,7 @@
                                             <span class="text-dark-blue font-weight-500">{{ dateTimeFormat($quiz->created_at, 'j F Y') }}</span>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @endforeach 
                                 </tbody>
                             </table>
                         </div>
