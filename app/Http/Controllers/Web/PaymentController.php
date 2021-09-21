@@ -2,28 +2,38 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Http\Controllers\Controller;
-use App\Models\Accounting;
-use App\Models\Cart;
-use App\Models\Order;
-use App\Models\OrderItem;
-use App\Models\PaymentChannel;
-use App\Models\ReserveMeeting;
-use App\Models\Sale;
-use App\Models\TicketUser;
-use App\PaymentChannels\ChannelManager;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Stripe\Charge;
 use Stripe\Stripe;
+use App\Models\Cart;
+use App\Models\Sale;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Accounting;
+use App\Models\TicketUser;
+use LVR\CreditCard\CardCvc;
+use Illuminate\Http\Request;
+use App\Models\PaymentChannel;
+use App\Models\ReserveMeeting;
+use LVR\CreditCard\CardNumber;
+use App\Http\Controllers\Controller;
+use LVR\CreditCard\CardExpirationYear;
+use App\PaymentChannels\ChannelManager;
+use LVR\CreditCard\CardExpirationMonth;
+use Illuminate\Support\Facades\Redirect;
 
 class PaymentController extends Controller
 {
     public function paymentRequest(Request $request)
     {
 
+
+
         $this->validate($request, [
-            'gateway' => 'required'
+            'gateway' => 'required',
+            'number' => ['required', 'unique:cards,cardNo', new CardNumber],
+            'exp_year' => ['required', new CardExpirationYear($this->get('expiration_month'))],
+            'exp_month' => ['required', new CardExpirationMonth($this->get('expiration_year'))],
+            'cvc' => ['required', new CardCvc($this->get('card_number'))]
         ]);
 
 

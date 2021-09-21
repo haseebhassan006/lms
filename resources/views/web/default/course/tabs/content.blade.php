@@ -124,35 +124,35 @@
                                     <div class="col-3 d-flex justify-content-end">
                                         @if($file->accessibility == 'paid')
                                             @if(!empty($user) and $hasBought)
-                                                @if($file->downloadable)
+                                                {{-- @if($file->downloadable)
                                                     <a href="{{ $course->getUrl() }}/file/{{ $file->id }}/download" class="course-content-btns btn btn-sm btn-primary flex-grow-1">
                                                         {{ trans('home.download') }}
                                                     </a>
-                                                @else
+                                                @else --}}
                                                     <button type="button" data-id="{{ $file->id }}" class="js-play-video course-content-btns btn btn-sm btn-primary flex-grow-1">
                                                         {{ trans('public.play') }}
                                                     </button>
-                                                @endif
+                                                {{-- @endif --}}
                                             @else
                                                 <button type="button" class="course-content-btns btn btn-sm btn-gray flex-grow-1 disabled {{ ((empty($user)) ? 'not-login-toast' : (!$hasBought ? 'not-access-toast' : '')) }}">
-                                                    @if($file->downloadable)
+                                                    {{-- @if($file->downloadable)
                                                         {{ trans('home.download') }}
-                                                    @else
+                                                    @else --}}
                                                         {{ trans('public.play') }}
-                                                    @endif
+                                                    {{-- @endif --}}
                                                 </button>
                                             @endif
 
                                         @else
-                                            @if($file->downloadable)
+                                            {{-- @if($file->downloadable)
                                                 <a href="{{ $course->getUrl() }}/file/{{ $file->id }}/download" class="course-content-btns btn btn-sm btn-primary flex-grow-1">
                                                     {{ trans('home.download') }}
                                                 </a>
-                                            @else
+                                            @else --}}
                                                 <button type="button" data-id="{{ $file->id }}" class="js-play-video course-content-btns btn btn-sm btn-primary flex-grow-1">
                                                     {{ trans('public.play') }}
                                                 </button>
-                                            @endif
+                                            {{-- @endif --}}
                                         @endif
                                     </div>
                                 </div>
