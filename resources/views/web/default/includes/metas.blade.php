@@ -5,21 +5,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-@if (App::environment('production'))
+{{-- @if (App::environment('production'))
     <meta name='robots' content="{{ $pageRobot ?? 'index, follow, all' }}">
 @else
     <meta name='robots' content="{{ $pageRobot ?? 'NOODP, nofollow, noindex' }}">
-@endif
+@endif --}}
 
-@if (isset($pageDescription) and !empty($pageDescription))
+{{-- @if (isset($pageDescription) and !empty($pageDescription))
     <meta name="description" content="{{ $pageDescription }}">
     <meta property="og:description" content="{{ (!empty($ogDescription)) ? $ogDescription : $pageDescription }}">
     <meta name='twitter:description' content='{{ (!empty($ogDescription)) ? $ogDescription : $pageDescription }}'>
-@endif
+@endif --}}
 
 <link rel='shortcut icon' type='image/x-icon' href='{{asset('favicon.ico') }}'>
 <link rel="manifest" href="/mix-manifest.json?v=4">
-<meta name="theme-color" content="#FFF">
+{{-- <meta name="theme-color" content="#FFF">
 <!-- Windows Phone -->
 <meta name="msapplication-starturl" content="/">
 <meta name="msapplication-TileColor" content="#FFF">
@@ -31,20 +31,20 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <!-- Android -->
 <link rel='icon' href='{{ asset('favicon.ico') }}'>
-<meta name="application-name" content="{{ !empty($generalSettings['site_name']) ? $generalSettings['site_name'] : '' }}">
+<meta name="application-name" content="{{ config('app.name') }}">
 <meta name="mobile-web-app-capable" content="yes">
 <!-- Other -->
-<meta name="layoutmode" content="fitscreen/standard">
-<link rel="home" href="{{ url('') }}">
+<meta name="layoutmode" content="fitscreen/standard"> --}}
+<link rel="home" href="{{ url('/') }}">
 
 <!-- Open Graph -->
 {{-- <meta property='og:title' content='{{ $pageTitle ?? '' }}'>
 <meta name='twitter:card' content='summary'>
 <meta name='twitter:title' content='{{ $pageTitle ?? '' }}'> --}}
 
-<meta property='og:site_name' content='{{ url(!empty($generalSettings['site_name']) ? $generalSettings['site_name'] : '') }}'>
+{{-- <meta property='og:site_name' content='{{ url(!empty($generalSettings['site_name']) ? $generalSettings['site_name'] : '') }}'>
 <meta property='og:image' content='{{ url(!empty($generalSettings['fav_icon']) ? $generalSettings['fav_icon'] : '') }}'>
 <meta name='twitter:image' content='{{ url(!empty($generalSettings['fav_icon']) ? $generalSettings['fav_icon'] : '') }}'>
 <meta property='og:locale' content='{{ url(!empty($generalSettings['locale']) ? $generalSettings['locale'] : 'en_US') }}'>
-<meta property='og:type' content='website'>
+<meta property='og:type' content='website'> --}}
 
