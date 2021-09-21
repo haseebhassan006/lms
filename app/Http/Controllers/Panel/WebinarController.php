@@ -233,6 +233,7 @@ class WebinarController extends Controller
 
     public function store(Request $request)
     {
+      
         $user = auth()->user();
 
         if (!$user->isTeacher() and !$user->isOrganization()) {

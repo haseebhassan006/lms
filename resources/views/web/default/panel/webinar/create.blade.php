@@ -53,12 +53,17 @@
 
 @push('scripts_bottom')
     <script>
-        ;(function (){ 
-        'use strict'
+
         var saveSuccessLang = '{{ trans('webinars.success_store') }}';
         var zoomJwtTokenInvalid = '{{ trans('webinars.zoom_jwt_token_invalid') }}';
         var hasZoomApiToken = '{{ (!empty($authUser->zoomApi) and $authUser->zoomApi->jwt_token) ? 'true' : 'false' }}';
-        }())
+
+        $('body').on('click', '#sendForReview', function (e) {
+    $(this).addClass('loadingbar primary').prop('disabled', true);
+    e.preventDefault();
+    $('#forDraft').val(0);
+    $('#webinarForm').trigger('submit');
+  });
     </script>
 
     <script src="/assets/default/js/panel/webinar.min.js"></script>
