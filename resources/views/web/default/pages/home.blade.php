@@ -1,7 +1,7 @@
 @extends(getTemplate().'.layouts.app')
 @push('styles_top')
-    <link rel="stylesheet" href="/assets/default/vendors/swiper/swiper-bundle.min.css">
-    <link rel="stylesheet" href="/assets/default/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="{{ asset('/assets/default/vendors/swiper/swiper-bundle.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/default/vendors/select2/select2.min.css') }}">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 @endpush
 
@@ -573,10 +573,10 @@
 
 
 @push('scripts_bottom')
-    <script src="/assets/default/vendors/swiper/swiper-bundle.min.js"></script>
-    <script src="/assets/default/vendors/owl-carousel2/owl.carousel.min.js"></script>
-    <script src="/assets/default/vendors/parallax/parallax.min.js"></script>
-    <script src="/assets/default/js/parts/home.min.js"></script>
+    <script src="{{ asset('/assets/default/vendors/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('/assets/default/vendors/owl-carousel2/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('/assets/default/vendors/parallax/parallax.min.js') }}"></script>
+    <script src="{{ asset('/assets/default/js/parts/home.min.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://netteria.net/myscript/jquery/html5videopopup/js/videopopup.js"></script>

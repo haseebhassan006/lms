@@ -17,7 +17,7 @@
     <meta name='twitter:description' content='{{ (!empty($ogDescription)) ? $ogDescription : $pageDescription }}'>
 @endif
 
-<link rel='shortcut icon' type='image/x-icon' href='/favicon.ico'>
+<link rel='shortcut icon' type='image/x-icon' href='{{asset('favicon.ico') }}'>
 <link rel="manifest" href="/mix-manifest.json?v=4">
 <meta name="theme-color" content="#FFF">
 <!-- Windows Phone -->
