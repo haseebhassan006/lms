@@ -35,7 +35,7 @@ class Cart extends Model
 
     public static function emptyCart($userId)
     {
-        
+
         Cart::where('creator_id', $userId)->delete();
     }
 }

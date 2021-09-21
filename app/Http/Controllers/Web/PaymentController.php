@@ -184,6 +184,7 @@ class PaymentController extends Controller
         if ($order->is_charge_account) {
             Accounting::charge($order);
         } else {
+
             foreach ($order->orderItems as $orderItem) {
                 $sale = Sale::createSales($orderItem, $order->payment_method);
 
@@ -194,7 +195,6 @@ class PaymentController extends Controller
                         'reserved_at' => time()
                     ]);
                 }
-
                 if (!empty($orderItem->subscribe_id)) {
                     Accounting::createAccountingForSubscribe($orderItem, $type);
                 } elseif (!empty($orderItem->promotion_id)) {
@@ -209,9 +209,11 @@ class PaymentController extends Controller
                 }
 
             }
-        }
 
-        Cart::emptyCart($order->user_id);
+        }
+        Cart::where('creator_id',$order->user_id)->delete();
+
+
     }
 
     public function payStatus(Request $request)

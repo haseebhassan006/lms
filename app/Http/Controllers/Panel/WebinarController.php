@@ -735,7 +735,7 @@ class WebinarController extends Controller
 
         $query = Webinar::whereIn('id', $webinarIds);
 
-        $allWebinars = deepClone($query)->get();
+        $allWebinars = deepClone($query)->orderBy('id','DESC')->get();
         $allWebinarsCount = $allWebinars->count();
         $hours = $allWebinars->sum('duration');
 

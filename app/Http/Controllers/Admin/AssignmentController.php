@@ -75,6 +75,15 @@ class AssignmentController extends Controller
         return response()->download(public_path($file->file));
     }
 
+    public function edit($id){
+  
+        $courses =  Webinar::where('status', 'active')->get();
+        $assignment = Assignment::where('id', $id)->first();
+    
+        return view('admin.assignments.edit', compact('courses','assignment'));
+
+    }
+
    // public function edit($id)
     // {
     //     $this->authorize('admin_categories_edit');
@@ -95,26 +104,46 @@ class AssignmentController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $this->authorize('admin_categories_edit');
+        $assignment = Assignment::where('id',$id)->first();
 
-        // $this->validate($request, [
-        //     'title' => 'required|min:3|max:128',
-        //     'icon' => 'required',
-        // ]);
+        $validate  = $request->validate([
 
-        // $category = Category::findOrFail($id);
-        // $category->update([
-        //     'title' => $request->input('title'),
-        //     'icon' => $request->input('icon'),
-        // ]);
+            'title' => 'required',
+            'file' => 'required',
+            'course' => 'required'
 
-        // $hasSubCategories = (!empty($request->get('has_sub')) and $request->get('has_sub') == 'on');
-        // $this->setSubCategory($category, $request->get('sub_categories'), $hasSubCategories);
+        ]);
+
+        $assignment->title = $request->title;
+        $assignment->description = $request->description;
+        $assignment->webinar_id = $request->webinar_id;
+        $assignment->file = $request->file;
+        $assignment->deadline = $request->deadline;
+        $updated = $assignment->save();
+        if($updated){
+
+            return back()->with('message','Assignment Updated');
+
+        }else{
+            return back()->with('message','Something Went Wrong');
+
+        }
+
+    }
 
 
-        // cache()->forget(Category::$cacheKey);
+    public function destroy($id){
 
-        // return redirect('/admin/categories');
+        $assignment = Assignment::where('id',$id)->first();
+        if($assignment->delete()){
+
+            return back()->with('message','Assignment Deleted');
+
+        }else{
+            return back()->with('message','Failed To Delete Assignment');
+        }
+
+
     }
 
     // public function destroy(Request $request, $id)
