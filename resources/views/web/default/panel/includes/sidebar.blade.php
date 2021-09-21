@@ -152,13 +152,6 @@
                         </li>
                     @endif --}}
 
-                    <li class="mt-5 {{ (request()->is('panel/webinars/purchases')) ? 'active' : '' }}">
-                        <a href="/panel/webinars/purchases">My Courses</a>
-                    </li>
-                    <li class="mt-5 {{ (request()->is('panel/assignments/my/assignment/')) ? 'active' : '' }}">
-                        <a href="/panel/assignments/my/assignment">My Assignments</a>
-                    </li>
-
                     @if($authUser->isOrganization() || $authUser->isTeacher())
 
                         <li class="mt-5 {{ (request()->is('panel/webinars/comments')) ? 'active' : '' }}">
@@ -238,6 +231,14 @@
             </div>
         </li>
    @if($authUser->isUser())
+
+   <li class="mt-5 {{ (request()->is('panel/webinars/purchases')) ? 'active' : '' }}">
+    <a href="/panel/webinars/purchases">My Courses</a>
+</li>
+<li class="mt-5 {{ (request()->is('panel/assignments/my/assignment/')) ? 'active' : '' }}">
+    <a href="/panel/assignments/my/assignment">My Assignments</a>
+</li>
+
    <li class="sidenav-item {{ (request()->is('/cart/')) ? 'sidenav-item-active' : '' }}">
     <a href="/cart/" class="d-flex align-items-center">
     <span class="sidenav-item-icon mr-10">
