@@ -30,10 +30,7 @@ class PaymentController extends Controller
 
         $this->validate($request, [
             'gateway' => 'required',
-            'number' => ['required', 'unique:cards,cardNo', new CardNumber],
-            'exp_year' => ['required', new CardExpirationYear($this->get('expiration_month'))],
-            'exp_month' => ['required', new CardExpirationMonth($this->get('expiration_year'))],
-            'cvc' => ['required', new CardCvc($this->get('card_number'))]
+
         ]);
 
 
