@@ -18,7 +18,7 @@
 @endif --}}
 
 <link rel='shortcut icon' type='image/x-icon' href='{{asset('favicon.ico') }}'>
-<link rel="manifest" href="/mix-manifest.json?v=4">
+{{-- <link rel="manifest" href="/mix-manifest.json?v=4"> --}}
 {{-- <meta name="theme-color" content="#FFF">
 <!-- Windows Phone -->
 <meta name="msapplication-starturl" content="/">
@@ -35,7 +35,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <!-- Other -->
 <meta name="layoutmode" content="fitscreen/standard"> --}}
-<link rel="home" href="{{ url('/') }}">
+{{-- <link rel="home" href="{{ url('/') }}"> --}}
 
 <!-- Open Graph -->
 {{-- <meta property='og:title' content='{{ $pageTitle ?? '' }}'>

@@ -18,6 +18,7 @@ class WebinarController extends Controller
 {
     public function course($slug)
     {
+        
         $user = null;
 
         if (auth()->check()) {
