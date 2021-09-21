@@ -104,13 +104,14 @@ class AssignmentController extends Controller
 
     public function update(Request $request, $id)
     {
+       
         $assignment = Assignment::where('id',$id)->first();
 
         $validate  = $request->validate([
 
             'title' => 'required',
             'file' => 'required',
-            'course' => 'required'
+            'webinar_id' => 'required'
 
         ]);
 

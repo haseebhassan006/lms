@@ -44,7 +44,7 @@
                                 <div class="form-group">
                                     <label>Course</label>
 
-                                    <select name="course" class="form-control  @error('course') is-invalid @enderror">
+                                    <select name="webinar_id" class="form-control  @error('course') is-invalid @enderror">
                                         <option>
                                             Select Course
                                         </option>

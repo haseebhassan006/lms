@@ -46,6 +46,7 @@
                                                     </a>
                                                 @endcan
                                                 @can('admin_categories_delete')
+                                               
                                                     @include('admin.includes.delete_button',['url' => '/admin/assignments/'.$assignment->id.'/delete'])
                                                 @endcan
                                             </td>
