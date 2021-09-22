@@ -37,26 +37,12 @@
                                 </td>
                                 <td class="text-left">{{ $assignment->title }}</td>
                                 <td>{{ $assignment->course->title }}</td>
-
                                 <td>{{ $assignment->deadline }}</td>
-
-
                                 <td>
-                                      @if($authUser->isTeacher())
-                                      <a href="/panel/assignments/assignment/submited/{{  $assignment->id }}" class="btn-sm btn-primary w-10 mt-2">
-                                        Show
-                                    </a>
 
-                                      @else
                                         <a href="/panel/assignments/files/{{$assignment->id}}" class="btn-sm btn-primary w-10 mt-2">
                                             <i class="fas fa-download"></i>
                                         </a>|
-                                        <a href="/panel/assignments/upload/{{ $assignment->id }}" class="btn-sm btn-primary w-10 mt-2">
-                                            <i class="fas fa-upload"></i>
-                                         </a>
-                                         @endif
-
-
 
                                 </td>
                             </tr>

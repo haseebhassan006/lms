@@ -4,9 +4,10 @@ namespace App\Http\Controllers\panel;
 
 use App\User;
 use Carbon\Carbon;
+use App\Models\Webinar;
 use App\AssignmentUpload;
-use App\Models\Assignment;
 
+use App\Models\Assignment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -32,10 +33,46 @@ class AssignmentController extends Controller
     }
 
     public function create(){
-        return view('web.default.panel.assignments.create');
+        $courses =  Webinar::where('status', 'active')
+        ->get();
+
+        return view('web.default.panel.assignments.create',compact('courses'));
     }
 
-    public function store(){
+    public function instructor_assignments($id){
+        $assignments = Assignment::where('user_id','=',$id)->with('course')->paginate(5);
+
+        return view('web.default.panel.assignments.list',compact('assignments'));
+    }
+
+    public function submited_assignments($id){
+
+        $assignments = AssignmentUpload::where('assignment_id',$id)->with('course')->paginate(5);
+        return view('web.default.panel.assignments.submited_assignment',compact('assignments'));
+    }
+
+    public function store(Request $request){
+
+        $assignment = new Assignment;
+        $validate  = $request->validate([
+
+            'title' => 'required',
+            'file' => 'required',
+            'course' => 'required'
+
+        ]);
+
+
+        $assignment->title = $request->title;
+        $assignment->file = $request->file;
+        $assignment->webinar_id = $request->course;
+        $assignment->user_id = Auth::user()->id;
+        $assignment->description = $request->description;
+        $assignment->deadline = $request->deadline;
+        $assignment->save();
+
+
+        return back()->with('message','Assignment Uploaded');
 
     }
 
@@ -51,7 +88,7 @@ class AssignmentController extends Controller
 
 
      public function submit_assignment(Request $request){
-         
+
        $upload = new AssignmentUpload();
        $upload->assignment_id = $request->assignment_id;
        $upload->file = $request->file;

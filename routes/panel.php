@@ -18,11 +18,16 @@ Route::group(['namespace' => 'Panel', 'prefix' => 'panel', 'middleware' => ['imp
         Route::post('/offlineToggle', 'UserController@offlineToggle');
     });
     Route::group(['prefix' => 'assignments'], function () {
+        Route::get('create', 'AssignmentController@create');
         Route::get('/{id}', 'AssignmentController@index');
         Route::get('/my/assignment', 'AssignmentController@myAssignments');
         Route::get('files/{id}/', 'AssignmentController@download')->name('download');
         Route::get('/upload/{id}','AssignmentController@upload');
         Route::post('/submit','AssignmentController@submit_assignment');
+        Route::post('/store','AssignmentController@store');
+        Route::get('/instructor/assignment/{id}','AssignmentController@instructor_assignments');
+        Route::get('/assignment/submited/{id}','AssignmentController@submited_assignments');
+
 
 
 

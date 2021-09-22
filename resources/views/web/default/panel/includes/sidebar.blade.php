@@ -137,9 +137,7 @@
                         <li class="mt-5 {{ (request()->is('panel/webinars')) ? 'active' : '' }}">
                             <a href="/panel/webinars">{{ trans('panel.my_classes') }}</a>
                         </li>
-                        <li class="mt-5 {{ (request()->is('panel/assignments')) ? 'active' : '' }}">
-                            <a href="">Assignments</a>
-                        </li>
+
 
                         <li class="mt-5 {{ (request()->is('panel/webinars/invitations')) ? 'active' : '' }}">
                             <a href="/panel/webinars/invitations">{{ trans('panel.invited_classes') }}</a>
@@ -332,6 +330,26 @@
                 </ul>
             </div>
         </li> --}}
+        @if($authUser->isTeacher())
+        <li class="sidenav-item {{ (request()->is('panel/assignments') or request()->is('panel/assignments/*')) ? 'sidenav-item-active' : '' }}">
+            <a class="d-flex align-items-center" data-toggle="collapse" href="#assignmentsCollapse" role="button" aria-expanded="false" aria-controls="assignmentsCollapse">
+                <span class="sidenav-item-icon mr-10">
+                    {{-- @include('web.default.panel.includes.sidebar_icons.quizzes') --}}
+                </span>
+                <span class="font-14 text-dark-blue font-weight-500">Assignments</span>
+            </a>
+            <div class="collapse {{ (request()->is('panel/assignments') or request()->is('panel/assignments/*')) ? 'show' : '' }}" id="assignmentsCollapse">
+                <ul class="sidenav-item-collapse">
+                    <li class="mt-5 {{ (request()->is('/panel/assignments/instructor/assignments')) ? 'active' : '' }}">
+                        <a href="/panel/assignments/instructor/assignment/{{ $authUser->id }}">Assignments</a>
+                    </li>
+                    <li class="mt-5 {{ (request()->is('panel/assignments/create')) ? 'active' : '' }}">
+                        <a href="/panel/assignments/create">Create Assignment</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        @endif
 
         @if(!$authUser->isUser())
             {{-- <li class="sidenav-item {{ (request()->is('panel/marketing') or request()->is('panel/marketing/*')) ? 'sidenav-item-active' : '' }}">
@@ -396,6 +414,8 @@
                 <span class="font-14 text-dark-blue font-weight-500">{{ trans('panel.settings') }}</span>
             </a>
         </li>
+
+
 
         @if($authUser->isTeacher() or $authUser->isOrganization())
             <li class="sidenav-item ">
