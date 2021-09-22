@@ -17,14 +17,14 @@
                         <h1 class="text-white font-30 mb-15">{{ $category->title }}</h1>
                         <span class="course-count-badge py-5 px-10 text-white rounded">{{ $category->webinars_count }} {{ trans('product.courses') }}</span>
 
-                        <div class="search-input bg-white p-10 flex-grow-1">
+                        {{-- <div class="search-input bg-white p-10 flex-grow-1">
                             <form action="/search" method="post">
                                 <div class="form-group d-flex align-items-center m-0">
                                     <input type="text" class="form-control border-0" placeholder="{{ trans('home.slider_search_placeholder') }}"/>
                                     <button type="submit" class="btn btn-primary rounded-pill">{{ trans('home.find') }}</button>
                                 </div>
                             </form>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

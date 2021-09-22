@@ -17,14 +17,14 @@
                         <h1 class="text-white font-30 mb-15">{{ $title }}</h1>
                         <span class="course-count-badge py-5 px-10 text-white rounded">{{ $instructorsCount }} {{ $title }}</span>
 
-                        <div class="search-input bg-white p-10 flex-grow-1">
+                        {{-- <div class="search-input bg-white p-10 flex-grow-1">
                             <form action="/{{ $page }}" method="get">
                                 <div class="form-group d-flex align-items-center m-0">
                                     <input type="text" name="search" class="form-control border-0" value="{{ request()->get('search') }}" placeholder="{{ trans('public.search') }} {{ $title }}"/>
                                     <button type="submit" class="btn btn-primary rounded-pill">{{ trans('home.find') }}</button>
                                 </div>
                             </form>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -188,6 +188,6 @@
 @push('scripts_bottom')
     <script src="/assets/default/vendors/select2/select2.min.js"></script>
     <script src="/assets/default/vendors/swiper/swiper-bundle.min.js"></script>
-    
+
     <script src="/assets/default/js/parts/instructors.min.js"></script>
 @endpush
