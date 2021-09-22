@@ -183,6 +183,7 @@ section.banner .content form button{
     border-radius: 0;
     border-left: 0;
     padding: 0 22px;
+    height:40px;
 }
 section.banner .content form button i{
     color: #FF0707;
