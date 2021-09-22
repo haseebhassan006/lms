@@ -202,7 +202,7 @@ section.video-section{
     background-size: 75% 60%;
     background-position: right;
 }
-section.video-section .sec-heading{}
+/* section.video-section .sec-heading{} */
 section.video-section .sec-para{
     width: 75%;
     margin: 0 auto 60px;
