@@ -40,26 +40,19 @@ class AssignmentController extends Controller
     }
 
     public function download($id){
-
-
         $file = Assignment::where('id',$id)->first();
         return response()->download(public_path($file->file));
      }
 
      public function upload($id){
-
-
         $file = Assignment::where('id',$id)->first();
         return view('web.default.panel.assignments.upload',compact('file'));
      }
 
 
      public function submit_assignment(Request $request){
-
-
-
+         
        $upload = new AssignmentUpload();
-
        $upload->assignment_id = $request->assignment_id;
        $upload->file = $request->file;
        $upload->user_id = Auth::user()->id;
