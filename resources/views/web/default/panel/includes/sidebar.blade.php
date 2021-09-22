@@ -256,7 +256,7 @@
    <li class="sidenav-item {{ (request()->is('panel/assignments') or request()->is('panel/assignments/*')) ? 'sidenav-item-active' : '' }}">
     <a class="d-flex align-items-center" data-toggle="collapse" href="#assignmentsCollapse" role="button" aria-expanded="false" aria-controls="assignmentsCollapse">
         <span class="sidenav-item-icon mr-10">
-            {{-- @include('web.default.panel.includes.sidebar_icons.quizzes') --}}
+            @include('web.default.panel.includes.sidebar_icons.students')
         </span>
         <span class="font-14 text-dark-blue font-weight-500">Assignments</span>
     </a>

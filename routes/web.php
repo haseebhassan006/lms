@@ -92,7 +92,6 @@ Route::group(['namespace' => 'Web', 'middleware' => ['impersonate', 'share']], f
             Route::get('/', 'CartController@index');
             Route::post('/store', 'CartController@store');
             Route::get('/{id}/delete', 'CartController@destroy');
-
             Route::post('/coupon/validate', 'CartController@couponValidate');
             Route::post('/checkout', 'CartController@checkout')->name('checkout');
         });
