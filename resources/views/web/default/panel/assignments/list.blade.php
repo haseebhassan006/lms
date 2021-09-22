@@ -49,10 +49,10 @@
 
                                       @else
                                         <a href="/panel/assignments/files/{{$assignment->id}}" class="btn-sm btn-primary w-10 mt-2">
-                                            <i class="fas fa-download"></i>
+                                            Download
                                         </a>|
                                         <a href="/panel/assignments/upload/{{ $assignment->id }}" class="btn-sm btn-primary w-10 mt-2">
-                                            <i class="fas fa-upload"></i>
+                                          Upload
                                          </a>
                                          @endif
 
