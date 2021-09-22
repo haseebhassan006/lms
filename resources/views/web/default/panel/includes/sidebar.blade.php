@@ -252,6 +252,26 @@
     </a>
 </li>
    @endif
+   @if($authUser->isTeacher())
+   <li class="sidenav-item {{ (request()->is('panel/assignments') or request()->is('panel/assignments/*')) ? 'sidenav-item-active' : '' }}">
+    <a class="d-flex align-items-center" data-toggle="collapse" href="#assignmentsCollapse" role="button" aria-expanded="false" aria-controls="assignmentsCollapse">
+        <span class="sidenav-item-icon mr-10">
+            {{-- @include('web.default.panel.includes.sidebar_icons.quizzes') --}}
+        </span>
+        <span class="font-14 text-dark-blue font-weight-500">Assignments</span>
+    </a>
+    <div class="collapse {{ (request()->is('panel/assignments') or request()->is('panel/assignments/*')) ? 'show' : '' }}" id="assignmentsCollapse">
+        <ul class="sidenav-item-collapse">
+            <li class="mt-5 {{ (request()->is('/panel/assignments/instructor/assignments')) ? 'active' : '' }}">
+                <a href="/panel/assignments/instructor/assignment/{{ $authUser->id }}">Assignments</a>
+            </li>
+            <li class="mt-5 {{ (request()->is('panel/assignments/create')) ? 'active' : '' }}">
+                <a href="/panel/assignments/create">Create Assignment</a>
+            </li>
+        </ul>
+    </div>
+</li>
+ @endif
         <li class="sidenav-item {{ (request()->is('panel/certificates') or request()->is('panel/certificates/*')) ? 'sidenav-item-active' : '' }}">
             <a class="d-flex align-items-center" data-toggle="collapse" href="#certificatesCollapse" role="button" aria-expanded="false" aria-controls="certificatesCollapse">
                 <span class="sidenav-item-icon mr-10">

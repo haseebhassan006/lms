@@ -48,7 +48,6 @@ class AssignmentController extends Controller
     }
 
     public function submited_assignments($id){
-
         $assignments = AssignmentUpload::where('assignment_id',$id)->with('course')->paginate(5);
         return view('web.default.panel.assignments.submited_assignment',compact('assignments'));
     }
